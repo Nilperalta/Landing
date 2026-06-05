@@ -70,7 +70,10 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-image: linear-gradient(#37433F, #0B1D33);
+    background-image: linear-gradient(
+        rgba(55, 67, 63, 0.90) 0%,
+        rgba(11, 29, 51, 1.00) 50%
+    );
     border-radius: 16px;
     padding: 16px;
     gap: 16px;
@@ -167,10 +170,15 @@ body {
 
 .colors{
     /*border: 2px solid red;*/
-    display: flex;
+    display: none;
     padding: 0px 16px 0px 8px;
     gap: 16px;
     padding-bottom: 24px;
+}
+
+/*clase para mostrar colores*/
+.colors--visible {
+    display: flex;
 }
 
 .color-item{
@@ -205,9 +213,14 @@ body {
 
 .tallas{
     /*border: 2px solid yellow;*/
-    display: flex;
+    display: none;
     gap: 16px;
     padding: 0px 16px 0px 8px;
+}
+
+/*clase para mostrar colores*/
+.tallas--visible{
+    display: flex;
 }
 
 .tallas span{
@@ -305,9 +318,14 @@ body {
 
 .product-description__extra{
     /*border: 2px solid pink;*/
-    display: flex;
+    display: none;
     flex-direction: column;
     gap: 16px;
+}
+
+/*descripcion visible*/
+.product-description__extra--visible{
+    display: flex;
 }
 
 .product-description__extra p{
