@@ -152,6 +152,7 @@ body {
 }
 
 .product-options__header{
+    /*border: 1px solid red;*/
     border-top: 1px solid #BBB4B4;
     display: flex;
     justify-content: space-between;
@@ -246,13 +247,18 @@ body {
 
 .tallas__guia{
     /*border: 2px solid yellow;*/
-    display: flex;
+    display: none;
     justify-content: end;
     color: #3079AE;
     font-size: 14px;
     font-weight: normal;
     text-decoration: underline;
     padding: 0 8px;
+    margin-bottom: 32px;
+}
+/*clase para mostrar talla guía*/
+.tallas__guia--visible{
+    display: flex;
 }
 
 /*Cantidad*/
@@ -262,7 +268,7 @@ body {
     align-items: center;
     justify-content: space-between;
     padding-left: 8px;
-    margin: 32px 0;
+    margin: 0px 0 32px 0;
 }
 
 .product-options__amount p{
