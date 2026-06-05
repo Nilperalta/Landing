@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="product-image">
+    <img src="images/image_p.png" alt="Camisa bootcut">
+    
+        <section class="product-info">
+            <div class="product-info__header">
+                <h1 class="product-info__title">Camisa bootcut</h1>
+                <i class="fa-regular fa-bookmark"></i>
+            </div>
+            <div class="product-info__price">
+                <p>precio</p>
+                <div class="group-prices">
+                    <p class="product-info__price--current"><del>S/190.00</del></p>
+                    <p class="product-info__price--original">S/120.00</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+
+    <!--Sección opciones del producto-->
+    <section class="product-options">
+
+        <!-- COLOR -->
+        <div class="product-options__category">
+            <div class="product-options__header">
+            <p>Color</p>
+            <i class="fa-solid fa-plus"></i>
+            </div>
+
+            <div class="colors">
+                <div class="color-item">
+                    <div class="color-item__circle" style="background-color: #C6D7EA;"></div>
+                    <p>Celeste</p>
+                </div>
+
+                <div class="color-item">
+                    <div class="color-item__circle" style="background-color: #E2588A;"></div>
+                    <p>Rosado</p>
+                </div>
+
+                <div class="color-item">
+                    <div class="color-item__circle" style="background-color: #778E6B;"></div>
+                    <p>Olivo</p>
+                </div>
+
+                <div class="color-item">
+                    <div class="color-item__circle" style="background-color: #111111;"></div>
+                    <p>Negro</p>
+                </div>
+
+                <div class="color-item">
+                    <div class="color-item__circle" style="background-color: #6460DB;"></div>
+                    <p>Morado</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- TALLA -->
+        <div class="product-options__category">
+            <div class="product-options__header">
+            <p>Talla</p>
+            <i class="fa-solid fa-plus"></i>
+            </div>
+
+            <div class="product-options__content">
+            <div class="tallas">
+                <span>XS</span>
+                <span class="talla--agotada">S</span>
+                <span class="talla--agotada">M</span>
+                <span class="talla--agotada">L</span>
+                <span class="talla--agotada">XL</span>
+            </div>
+            <p class="tallas__guia">Guía de tallas</p>
+            </div>
+        </div>
+
+        <!-- CANTIDAD -->
+        <div class="product-options__amount">
+            <p>Cantidad</p>
+            <div class="product-options__counter">
+                <i class="fa-solid fa-circle-minus"></i>
+                <span>01</span>
+                <i class="fa-solid fa-circle-plus"></i>
+            </div>
+        </div>
+
+        </section>
+
+    <!--Sección descripción del producto-->
+    <section class="product-description">
+        <p>Descripción</p>
+        <span class="product-description__text">
+            Vestido sin cierre y pretina prolongada con botón oculto y corchetes. Piernas bootcut con pliegue delante y detrás, bolsillos laterales en diagonal y bolsillos traseros ribeteados...
+        </span>
+
+        <!-- esto ya existe en el HTML pero JS lo oculta por defecto -->
+        <div class="product-description__extra">
+            <p>Medidas</p>
+            <span>Vestido sin cierre y pretina prolongada con botón oculto y corchetes.</span>
+            
+            <p>Composición</p>
+            <span>Vestido sin cierre y pretina prolongada con botón oculto y corchetes.</span>
+        </div>
+
+        <span class="product-description__toggle">Ver más</span>
+    </section>
+
+    <!--Sección vendedor del producto-->
+    <section class="product-seller">
+        <p>Vendido por</p>
+        <div class="product-seller__content">
+            <img src="images/Ellipse 3.png" alt="Mango">
+            
+            <div class="product-seller_contact">
+                
+                <div class="product-seller_header">
+                    <p>Mango</p>
+                    <span>RUC: 728257015</span>
+                </div>
+
+                <div class="product-seller__links">
+                    <div class="product-seller__link">
+                        <i class="fa-solid fa-earth-africa"></i>
+                        <span>Sitio web</span>
+                    </div>
+
+                    <div class="product-seller__link">
+                        <i class="fa-brands fa-instagram"></i>
+                        <span>Instagram</span>
+                    </div>
+                    
+                    <div class="product-seller__link">
+                        <i class="fa-solid fa-link"></i>
+                        <span>Linktree</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="product-footer">
+      <button>Seleccionar opciones</button>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
