@@ -35,3 +35,37 @@ btnVerMas.addEventListener('click', ()=>{
         btnVerMas.textContent = "Ver más"
     }
 })
+
+
+/*lightbox*/
+
+const imagenes = [
+    'images/image_p1.png',
+    'images/image_p2.png',
+    'images/image_p3.png',
+]
+
+const lightbox = document.getElementById('lightbox');
+const boxCounter= document.querySelector('.lightbox__counter');
+const boxImage= document.querySelector('.lightbox__img');
+const principalImage = document.getElementById('img-principal');
+const btnNext = document.querySelector('.lightbox__next');
+const btnClose = document.querySelector('.lightbox__close');
+
+let indice = 0
+
+principalImage.addEventListener('click', ()=>{
+    lightbox.classList.toggle('lightbox--visible');
+    boxImage.src = imagenes[0];
+})
+
+btnNext.addEventListener('click', ()=>{
+    indice = (indice + 1) % imagenes.length;
+    boxImage.src = imagenes[indice]
+})
+
+
+/*btn cerrar */
+btnClose.addEventListener('click', ()=>{
+    lightbox.classList.toggle('lightbox--visible');
+})
