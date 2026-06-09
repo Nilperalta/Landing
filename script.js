@@ -50,6 +50,7 @@ const boxCounter= document.querySelector('.lightbox__counter');
 const boxImage= document.querySelector('.lightbox__img');
 const principalImage = document.getElementById('img-principal');
 const btnNext = document.querySelector('.lightbox__next');
+const btnPrev = document.querySelector('.lightbox__prev');
 const btnClose = document.querySelector('.lightbox__close');
 
 let indice = 0
@@ -57,11 +58,19 @@ let indice = 0
 principalImage.addEventListener('click', ()=>{
     lightbox.classList.toggle('lightbox--visible');
     boxImage.src = imagenes[0];
+    boxCounter.textContent = (indice + 1) + "/" + imagenes.length;
 })
 
 btnNext.addEventListener('click', ()=>{
     indice = (indice + 1) % imagenes.length;
-    boxImage.src = imagenes[indice]
+    boxImage.src = imagenes[indice];
+    boxCounter.textContent = (indice + 1) + "/" + imagenes.length;
+})
+
+btnPrev.addEventListener('click', ()=>{
+    indice = (indice - 1 + imagenes.length) % imagenes.length;
+    boxImage.src = imagenes[indice];
+    boxCounter.textContent = (indice + 1) + "/" + imagenes.length;
 })
 
 
@@ -69,3 +78,7 @@ btnNext.addEventListener('click', ()=>{
 btnClose.addEventListener('click', ()=>{
     lightbox.classList.toggle('lightbox--visible');
 })
+
+
+
+/* contador */
