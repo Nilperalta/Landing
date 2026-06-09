@@ -162,10 +162,11 @@ body {
     padding: 16px 16px 16px 8px;
 }
 
-.product-options__header p{
-    font-size: 16px;
+.product-options__header label{
+    font-size: 14px;
     color: var(--color-text-primary);
     font-weight: normal;
+    text-transform: uppercase;
 }
 
 .product-options__header i{
@@ -198,8 +199,9 @@ body {
 }
 
 .color-item__circle {
-    width: 44px;
-    height: 44px;
+    /*border: 2px solid yellow;*/
+    width: 40px;
+    height: 40px;
     border-radius: 50%;  /* esto lo hace círculo */
     background-color: gray;  /* color por defecto */
 }
@@ -239,8 +241,8 @@ body {
     font-weight: 500;
     border: 1px solid #000000;
     border-radius: 12px;     /* Figma dice 12px no 16px */
-    height: 44px;
-    width: 44px;
+    height: 40px;
+    width: 40px;
 }
 
 .tallas .talla--agotada{
@@ -317,8 +319,9 @@ body {
 
 
 .product-description h2{
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 500;
+    text-transform: uppercase;
     color: var(--color-text-secondary);
 
 }
@@ -342,8 +345,9 @@ body {
 
 .product-description__extra h3{
     color: var(--color-text-secondary);
-    font-size: 16px;
+    font-size: 14px;
     font-weight: normal;
+    text-transform: uppercase;
 }
 
 .product-description__extra span{
@@ -445,12 +449,20 @@ body {
 
 .product-footer{
     /*border: 2px solid blue;*/
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 390px;
+    max-width: 100%;
     background: #F5F5F5;
     display: flex;
     justify-content: center;
     padding: 8px 24px 32px 24px;
-    margin: 0 -16px;
-    
+}
+
+.product-footer--hidden {
+    display: none;
 }
 
 .product-footer button{
@@ -458,6 +470,7 @@ body {
     border: none;
     border-radius: 24px;
     width: 342px;
+    height: 48px;
     padding: 8px 16px 8px 12px;
     color: #F7F7F7;
     font-size: 20px;

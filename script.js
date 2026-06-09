@@ -81,4 +81,13 @@ btnClose.addEventListener('click', ()=>{
 
 
 
-/* contador */
+/*btn fijo */
+const footer = document.querySelector('.product-footer');
+
+window.addEventListener('scroll', ()=>{
+    if (window.scrollY>10) {
+        footer.classList.add('product-footer--hidden')
+    } else {
+        footer.classList.remove('product-footer--hidden')
+    }
+})
