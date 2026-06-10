@@ -91,3 +91,30 @@ window.addEventListener('scroll', ()=>{
         footer.classList.remove('product-footer--hidden')
     }
 })
+
+
+const btnMinus = document.querySelector('.counter__btn--minus')
+const counterDisplay = document.querySelector('.counter__display')
+const btnPlus = document.querySelector('.counter__btn--plus')
+
+let counter = 1;
+
+if (counter<=9) {
+    counterDisplay.textContent = `0${counter}`;
+} else {
+    counterDisplay.textContent = counter;
+}
+
+btnMinus.addEventListener('click', ()=>{
+
+    if (counter === 1) {
+        btnMinus.disabled =true;
+    } else {
+        counterDisplay.textContent= counter-1;
+        btnMinus.disabled =false;
+    }
+})
+
+btnPlus.addEventListener('click', ()=>{
+    counterDisplay.textContent = counter+1;
+})
