@@ -93,6 +93,7 @@ window.addEventListener('scroll', ()=>{
 })
 
 
+/*btn +/- y display */
 const btnMinus = document.querySelector('.counter__btn--minus')
 const counterDisplay = document.querySelector('.counter__display')
 const btnPlus = document.querySelector('.counter__btn--plus')
@@ -107,8 +108,10 @@ if (counter<=9) {
 
 
 btnMinus.addEventListener('click', ()=>{
+
     if (counter <= 0) {
         btnMinus.disabled = true;
+
     } else {
         counter--;
         btnMinus.disabled = false;
@@ -132,3 +135,27 @@ btnPlus.addEventListener('click', ()=>{
         counterDisplay.textContent = counter;
     }
 })
+
+/*Seleccionar color */
+
+const btnColor = document.querySelectorAll('.color-item__circle')
+
+
+btnColor.forEach(color => {
+    color.addEventListener('click', () => {
+        btnColor.forEach(c => c.classList.remove('color-item__circle--selected'))
+        color.classList.add('color-item__circle--selected')
+    })
+})
+
+
+/*Seleccionar talla */
+
+const btnTalla = document.querySelectorAll('.tallas .talla--disponible')
+
+btnTalla.forEach(talla => {
+    talla.addEventListener('click', ()=>{
+        btnTalla.forEach(t=> t.classList.remove('talla--selected'))
+        talla.classList.add('talla--selected')
+    })
+});
