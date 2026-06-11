@@ -97,7 +97,7 @@ const btnMinus = document.querySelector('.counter__btn--minus')
 const counterDisplay = document.querySelector('.counter__display')
 const btnPlus = document.querySelector('.counter__btn--plus')
 
-let counter = 1;
+let counter = 0;
 
 if (counter<=9) {
     counterDisplay.textContent = `0${counter}`;
@@ -105,16 +105,30 @@ if (counter<=9) {
     counterDisplay.textContent = counter;
 }
 
-btnMinus.addEventListener('click', ()=>{
 
-    if (counter === 1) {
-        btnMinus.disabled =true;
+btnMinus.addEventListener('click', ()=>{
+    if (counter <= 0) {
+        btnMinus.disabled = true;
     } else {
-        counterDisplay.textContent= counter-1;
-        btnMinus.disabled =false;
+        counter--;
+        btnMinus.disabled = false;
+
+        if (counter <= 9) {
+            counterDisplay.textContent = `0${counter}`;
+        } else {
+            counterDisplay.textContent = counter;
+        }
     }
 })
 
+
 btnPlus.addEventListener('click', ()=>{
-    counterDisplay.textContent = counter+1;
+    counter++
+    counterDisplay.textContent = counter;
+
+    if (counter <= 9) {
+        counterDisplay.textContent = `0${counter}`;
+    } else {
+        counterDisplay.textContent = counter;
+    }
 })

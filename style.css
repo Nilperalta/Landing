@@ -194,7 +194,7 @@ body {
     
 }
 .color-item__circle--selected {
-    /*border: 1.5px solid #000000;*/
+    border: 1.5px solid #000000;
 }
 
 .color-item__circle {
