@@ -173,24 +173,31 @@ let colorSeleccionado = true;   // celeste ya está por defecto
 let tallaSeleccionada = false;
 
 btnCTA.addEventListener('click', ()=>{
-    if (tallaSeleccionada===false) {
+
+    if (tallaSeleccionada === false && counter === 0) {
         containerError.classList.add('container-error--visible')
         containerTalla.classList.add('product-options__header--error')
+        containerCounter.classList.add('product-options__counter--error')
+        textContainerError.textContent = "Falta seleccionar talla y cantidad"
+
+    } else if (tallaSeleccionada===false) {
+        containerError.classList.add('container-error--visible')
+        containerTalla.classList.add('product-options__header--error')
+        containerCounter.classList.remove('product-options__counter--error')
         textContainerError.textContent = "Falta seleccionar talla"
 
-    } else {
-
+    } else if (counter === 0) {
+        containerCounter.classList.add('product-options__counter--error')
+        containerError.classList.add('container-error--visible') //hago visible la caja error
         containerTalla.classList.remove('product-options__header--error')
-
-        if (counter === 0) {
-            containerCounter.classList.add('product-options__counter--error')
-            containerError.classList.add('container-error--visible') //hago visible la caja error
-            textContainerError.textContent = "Falta seleccionar cantidad" //cambio el texto de la caja visible
-        }else{
-            containerCounter.classList.remove('product-options__counter--error')
-            containerError.classList.remove('container-error--visible')
-            btnCTA.textContent = "Comprar ahora"
-            btnCTA.classList.add('btn--active') 
-        }
-    }
+        textContainerError.textContent = "Falta seleccionar cantidad" //cambio el texto de la caja visible
+        
+    } else{
+        containerCounter.classList.remove('product-options__counter--error')
+        containerTalla.classList.remove('product-options__header--error')
+        containerError.classList.remove('container-error--visible')
+        btnCTA.textContent = "Comprar ahora"
+        btnCTA.classList.add('btn--active')
+    } 
 })
+     
