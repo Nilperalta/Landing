@@ -157,5 +157,40 @@ btnTalla.forEach(talla => {
     talla.addEventListener('click', ()=>{
         btnTalla.forEach(t=> t.classList.remove('talla--selected'))
         talla.classList.add('talla--selected')
+        tallaSeleccionada = true
     })
 });
+
+/*Errores*/
+
+const btnCTA = document.getElementById('btn-cta')
+const containerError = document.querySelector('.container-error')
+const containerTalla = document.getElementById('toggle-talla')
+const containerCounter = document.querySelector('.product-options__counter')
+const textContainerError = document.querySelector('.product-footer__error') // selecciono el texto de la caja de error "p"
+
+let colorSeleccionado = true;   // celeste ya está por defecto
+let tallaSeleccionada = false;
+
+btnCTA.addEventListener('click', ()=>{
+    if (tallaSeleccionada===false) {
+        containerError.classList.add('container-error--visible')
+        containerTalla.classList.add('product-options__header--error')
+        textContainerError.textContent = "Falta seleccionar talla"
+
+    } else {
+
+        containerTalla.classList.remove('product-options__header--error')
+
+        if (counter === 0) {
+            containerCounter.classList.add('product-options__counter--error')
+            containerError.classList.add('container-error--visible') //hago visible la caja error
+            textContainerError.textContent = "Falta seleccionar cantidad" //cambio el texto de la caja visible
+        }else{
+            containerCounter.classList.remove('product-options__counter--error')
+            containerError.classList.remove('container-error--visible')
+            btnCTA.textContent = "Comprar ahora"
+            btnCTA.classList.add('btn--active') 
+        }
+    }
+})

@@ -161,6 +161,10 @@ body {
     padding: 16px 16px 16px 8px;
 }
 
+.product-options__header--error{
+    background-color: #FFEBEE;
+}
+
 .product-options__header label{
     font-size: 14px;
     color: var(--color-text-primary);
@@ -301,6 +305,10 @@ body {
     border-radius: 8px;
     width: 171px;   /* ancho fijo del diseño */
     height: 48px;   /* alto fijo del diseño */
+}
+
+.product-options__counter--error{
+    border: 1px solid #EF9A9A;
 }
 
 .product-options__counter span{
@@ -456,7 +464,7 @@ body {
 }
 
 .product-footer{
-    /*border: 2px solid blue;*/
+   /* border: 2px solid blue;*/
     position: fixed;
     bottom: 0;
     left: 50%;
@@ -466,10 +474,36 @@ body {
     max-width: 100%;*/
     background: #F5F5F5;
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    padding: 8px 24px 32px 24px;
+    /*padding: 8px 24px 32px 24px;*/
     opacity: 1;                     /*btn aparece*/
-    transition: opacity 0.3s ease;  
+    transition: opacity 0.3s ease; 
+}
+.container-error{
+    /*border: 2px solid red;*/
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 8px 24px 8px 24px;
+    gap: 4px;
+    background-color: #FFEBEE;
+}
+
+.container-error--visible{
+    display: flex;
+}
+
+.container-error p{
+    color: #EF5350;
+    font-size: 14px;
+    text-transform: capitalize;
+}
+
+.container-error i{
+    color: #E57373;
 }
 
 .product-footer--hidden {
@@ -477,10 +511,17 @@ body {
     pointer-events: none;
 }
 
+.product-footer__btn{
+    /*border: 2px solid black;*/
+    width: 100%;
+    padding: 8px 24px 32px 24px;
+}
+
 .product-footer button{
+    /*border: 2px solid red;*/
     border: none;
     border-radius: 24px;
-    width: 342px;
+    width: 100%;
     height: 48px;
     padding: 8px 16px 8px 12px;
     color: #F7F7F7;
@@ -489,8 +530,8 @@ body {
     background-color: #686262;
 }
 
-.btn--active {
-    background-color: #324247;
+.product-footer .btn--active {
+    background-color: #0A0000;
 }
 
 
