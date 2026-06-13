@@ -45,27 +45,27 @@
 
             <div class="colors">
                 <div class="color-item">
-                    <div class="color-item__circle color-item__circle--selected" style="background-color: #C6D7EA;"></div>
+                    <div class="color-item__circle color-item__circle--selected" data-color="celeste" style="background-color: #C6D7EA;"></div>
                     <p>Celeste</p>
                 </div>  
 
                 <div class="color-item">
-                    <div class="color-item__circle" style="background-color: #E2588A;"></div>
+                    <div class="color-item__circle" data-color="rosado" style="background-color: #E2588A;"></div>
                     <p>Rosado</p>
                 </div>
 
                 <div class="color-item">
-                    <div class="color-item__circle" style="background-color: #778E6B;"></div>
+                    <div class="color-item__circle" data-color="olivo" style="background-color: #778E6B;"></div>
                     <p>Olivo</p>
                 </div>
 
                 <div class="color-item">
-                    <div class="color-item__circle" style="background-color: #111111;"></div>
+                    <div class="color-item__circle" data-color="negro" style="background-color: #111111;"></div>
                     <p>Negro</p>
                 </div>
 
                 <div class="color-item">
-                    <div class="color-item__circle" style="background-color: #6460DB;"></div>
+                    <div class="color-item__circle"data-color="morado"  style="background-color: #6460DB;"></div>
                     <p>Morado</p>
                 </div>
             </div>
@@ -92,7 +92,10 @@
 
         <!-- CANTIDAD -->
         <div class="product-options__amount">
-            <p>Cantidad</p>
+             <div class="cantidad-info">
+                <p>Cantidad</p>
+                <p class="cantidad-max">Max. 03 unidades.</p>
+            </div>
             <div class="product-options__counter">
                 <i class="fa-solid fa-circle-minus counter__btn--minus"></i>
                 <span class="counter__display"></span>
@@ -158,6 +161,15 @@
         <div class="container-error">
             <i class="fa-solid fa-circle-exclamation"></i>
             <p class="product-footer__error">Falta seleccionar talla</p>
+        </div>
+
+        <div class="container-resumen">
+            <div class="resumen-info">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span>•</span>
+                <span>1 producto</span>
+            </div>
+            <span>S/120.00</span>
         </div>
 
         <div class="product-footer__btn">

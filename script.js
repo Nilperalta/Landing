@@ -115,6 +115,8 @@ btnMinus.addEventListener('click', ()=>{
     } else {
         counter--;
         btnMinus.disabled = false;
+        btnPlus.classList.remove('counter__btn--plus--disabled')
+        displayMaxUni.classList.remove('cantidad-max--visible')
 
         if (counter <= 9) {
             counterDisplay.textContent = `0${counter}`;
@@ -125,26 +127,48 @@ btnMinus.addEventListener('click', ()=>{
 })
 
 
-btnPlus.addEventListener('click', ()=>{
-    counter++
-    counterDisplay.textContent = counter;
+const stockPorColor = {
+    celeste: 3,
+    rosado: 5,
+    olivo: 2,
+    negro: 4,
+    morado: 6
+}
 
-    if (counter <= 9) {
-        counterDisplay.textContent = `0${counter}`;
-    } else {
-        counterDisplay.textContent = counter;
+const displayMaxUni = document.querySelector('.cantidad-max')
+
+
+btnPlus.addEventListener('click', ()=>{
+    if (counter < stockPorColor[colorActual]) {
+        counter++
+
+        if (counter <= 9) {
+            counterDisplay.textContent = `0${counter}`;
+        } else {
+            counterDisplay.textContent = counter;
+        }
+
+        if (counter >= stockPorColor[colorActual]) {
+            btnPlus.disabled = true
+            displayMaxUni.classList.add('cantidad-max--visible')
+            btnPlus.classList.add('counter__btn--plus--disabled')
+
+        }
     }
 })
 
 /*Seleccionar color */
 
+
 const btnColor = document.querySelectorAll('.color-item__circle')
+let colorActual = "celeste"
 
 
 btnColor.forEach(color => {
     color.addEventListener('click', () => {
         btnColor.forEach(c => c.classList.remove('color-item__circle--selected'))
         color.classList.add('color-item__circle--selected')
+        colorActual = color.dataset.color // elemento/seleccionar/data-color= solo tomo el color
     })
 })
 
@@ -168,6 +192,7 @@ const containerError = document.querySelector('.container-error')
 const containerTalla = document.getElementById('toggle-talla')
 const containerCounter = document.querySelector('.product-options__counter')
 const textContainerError = document.querySelector('.product-footer__error') // selecciono el texto de la caja de error "p"
+const containerResumen = document.querySelector('.container-resumen')
 
 let colorSeleccionado = true;   // celeste ya está por defecto
 let tallaSeleccionada = false;
@@ -196,8 +221,13 @@ btnCTA.addEventListener('click', ()=>{
         containerCounter.classList.remove('product-options__counter--error')
         containerTalla.classList.remove('product-options__header--error')
         containerError.classList.remove('container-error--visible')
+        containerResumen.classList.add('container-resumen--visible')
         btnCTA.textContent = "Comprar ahora"
         btnCTA.classList.add('btn--active')
     } 
 })
      
+
+
+
+
