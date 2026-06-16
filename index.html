@@ -23,8 +23,8 @@
             <div class="product-info__price">
                 <p>precio</p>
                 <div class="group-prices">
-                    <p class="product-info__price--current"><del>S/190.00</del></p>
-                    <p class="product-info__price--original">S/120.00</p>
+                    <p class="product-info__price--original"><del>S/190.00</del></p>
+                    <p class="product-info__price--current">S/120.00</p>
                 </div>
             </div>
         </section>
@@ -158,6 +158,12 @@
     </section>
 
     <div class="product-footer">
+
+        <div class="container-warning">
+            <i class="fa-solid fa-circle-exclamation"></i>
+            <p>Esta combinación no está disponible</p>
+        </div>
+
         <div class="container-error">
             <i class="fa-solid fa-circle-exclamation"></i>
             <p class="product-footer__error">Falta seleccionar talla</p>
@@ -167,9 +173,9 @@
             <div class="resumen-info">
                 <i class="fa-solid fa-bag-shopping"></i>
                 <span>•</span>
-                <span>1 producto</span>
+                <span class="resumen-cantidad">1 producto</span>
             </div>
-            <span>S/120.00</span>
+            <span class="resumen-total">S/120.00</span>
         </div>
 
         <div class="product-footer__btn">
@@ -192,12 +198,12 @@
         </div>
 
         <button class="lightbox__prev">
-            <i class="fa-solid fa-arrow-left"></i>
+            <i class="fa-solid fa-chevron-left"></i>
         </button>
 
         <!-- Botones izquieda y derecha -->
         <button class="lightbox__next">
-            <i class="fa-solid fa-arrow-right"></i>
+            <i class="fa-solid fa-chevron-right"></i>
         </button>
 
         <button class="lightbox__close">

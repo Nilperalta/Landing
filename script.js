@@ -45,6 +45,7 @@ const imagenes = [
     'images/image_p3.png',
 ]
 
+
 const lightbox = document.getElementById('lightbox');
 const boxCounter= document.querySelector('.lightbox__counter');
 const boxImage= document.querySelector('.lightbox__img');
@@ -126,11 +127,12 @@ btnMinus.addEventListener('click', ()=>{
     }
 })
 
+/*Stock por color*/
 
 const stockPorColor = {
     celeste: 3,
     rosado: 5,
-    olivo: 2,
+    olivo: 0,
     negro: 4,
     morado: 6
 }
@@ -139,20 +141,25 @@ const displayMaxUni = document.querySelector('.cantidad-max')
 
 
 btnPlus.addEventListener('click', ()=>{
+
     if (counter < stockPorColor[colorActual]) {
         counter++
 
         if (counter <= 9) {
             counterDisplay.textContent = `0${counter}`;
         } else {
-            counterDisplay.textContent = counter;
+            counterDisplay.textContent = counter;    
         }
 
         if (counter >= stockPorColor[colorActual]) {
-            btnPlus.disabled = true
-            displayMaxUni.classList.add('cantidad-max--visible')
             btnPlus.classList.add('counter__btn--plus--disabled')
-
+            displayMaxUni.classList.add('cantidad-max--visible')
+            
+            if (stockPorColor[colorActual] <= 9) {
+                displayMaxUni.textContent = `Max. 0${stockPorColor[colorActual]} unidades.`
+            } else {
+                displayMaxUni.textContent = `Max. ${stockPorColor[colorActual]} unidades.`
+            }
         }
     }
 })
@@ -161,14 +168,27 @@ btnPlus.addEventListener('click', ()=>{
 
 
 const btnColor = document.querySelectorAll('.color-item__circle')
+const containerwarning = document.querySelector('.container-warning')
 let colorActual = "celeste"
 
 
 btnColor.forEach(color => {
     color.addEventListener('click', () => {
         btnColor.forEach(c => c.classList.remove('color-item__circle--selected'))
+        counter = 0;
+        counterDisplay.textContent = `0${counter}`;
+        btnPlus.classList.remove('counter__btn--plus--disabled')
+        displayMaxUni.classList.remove('cantidad-max--visible')
         color.classList.add('color-item__circle--selected')
         colorActual = color.dataset.color // elemento/seleccionar/data-color= solo tomo el color
+        
+        const nombreColor = color.nextElementSibling // color es cada div.color-item__circle y color.nextElementSibling es el p
+        if (stockPorColor[colorActual] === 0) {
+            nombreColor.textContent = "Sin stock"
+            containerwarning.classList.add('container-warning--visible')
+        }else{
+            containerwarning.classList.remove('container-warning--visible')
+        }
     })
 })
 
@@ -194,12 +214,24 @@ const containerCounter = document.querySelector('.product-options__counter')
 const textContainerError = document.querySelector('.product-footer__error') // selecciono el texto de la caja de error "p"
 const containerResumen = document.querySelector('.container-resumen')
 
+
+/*captura de precio en resumen info */
+const precioElement = document.querySelector('.product-info__price--current')
+const precio = parseFloat(precioElement.textContent.replace('S/', '')) //obtiene solo el 120
+const resumenCantidad = document.querySelector('.resumen-cantidad')
+const resumenTotal = document.querySelector('.resumen-total')
+
 let colorSeleccionado = true;   // celeste ya está por defecto
 let tallaSeleccionada = false;
 
 btnCTA.addEventListener('click', ()=>{
 
-    if (tallaSeleccionada === false && counter === 0) {
+    if(stockPorColor[colorActual] === 0){
+        containerError.classList.remove('container-error--visible')
+        containerTalla.classList.remove('product-options__header--error')
+        containerCounter.classList.remove('product-options__counter--error')
+
+    } else if  (tallaSeleccionada === false && counter === 0) {
         containerError.classList.add('container-error--visible')
         containerTalla.classList.add('product-options__header--error')
         containerCounter.classList.add('product-options__counter--error')
@@ -216,12 +248,21 @@ btnCTA.addEventListener('click', ()=>{
         containerError.classList.add('container-error--visible') //hago visible la caja error
         containerTalla.classList.remove('product-options__header--error')
         textContainerError.textContent = "Falta seleccionar cantidad" //cambio el texto de la caja visible
-        
+    
+    
     } else{
         containerCounter.classList.remove('product-options__counter--error')
         containerTalla.classList.remove('product-options__header--error')
         containerError.classList.remove('container-error--visible')
         containerResumen.classList.add('container-resumen--visible')
+
+        if (counter >=2) {
+            resumenCantidad.textContent = `${counter} productos`
+        } else {
+            resumenCantidad.textContent = `${counter} producto`
+        }
+        
+        resumenTotal.textContent = `S/${precio*counter}.00`
         btnCTA.textContent = "Comprar ahora"
         btnCTA.classList.add('btn--active')
     } 
