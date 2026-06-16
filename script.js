@@ -39,11 +39,26 @@ btnVerMas.addEventListener('click', ()=>{
 
 /*lightbox*/
 
-const imagenes = [
+/*const imagenes = [
     'images/image_p1.png',
     'images/image_p2.png',
     'images/image_p3.png',
-]
+]*/
+
+const imagenes = {
+
+    celeste: [
+        'images/image_p1.png',
+        'images/image_p2.png',
+        'images/image_p3.png'
+    ],
+    rosado: [
+        'images/image_c2.png'
+    ],
+    olivo: [
+        'images/image_c3.png'
+    ]
+}
 
 
 const lightbox = document.getElementById('lightbox');
@@ -57,21 +72,22 @@ const btnClose = document.querySelector('.lightbox__close');
 let indice = 0
 
 principalImage.addEventListener('click', ()=>{
+    indice = 0;
     lightbox.classList.toggle('lightbox--visible');
-    boxImage.src = imagenes[0];
-    boxCounter.textContent = (indice + 1) + "/" + imagenes.length;
+    boxImage.src = imagenes[colorActual][0];
+    boxCounter.textContent = (indice + 1) + "/" + imagenes[colorActual].length;
 })
 
 btnNext.addEventListener('click', ()=>{
-    indice = (indice + 1) % imagenes.length;
-    boxImage.src = imagenes[indice];
-    boxCounter.textContent = (indice + 1) + "/" + imagenes.length;
+    indice = (indice + 1) % imagenes[colorActual].length;
+    boxImage.src = imagenes[colorActual][indice];
+    boxCounter.textContent = (indice + 1) + "/" + imagenes[colorActual].length;
 })
 
 btnPrev.addEventListener('click', ()=>{
-    indice = (indice - 1 + imagenes.length) % imagenes.length;
-    boxImage.src = imagenes[indice];
-    boxCounter.textContent = (indice + 1) + "/" + imagenes.length;
+    indice = (indice - 1 + imagenes[colorActual].length) % imagenes[colorActual].length;
+    boxImage.src = imagenes[colorActual][indice];
+    boxCounter.textContent = (indice + 1) + "/" + imagenes[colorActual].length;
 })
 
 
@@ -181,7 +197,8 @@ btnColor.forEach(color => {
         displayMaxUni.classList.remove('cantidad-max--visible')
         color.classList.add('color-item__circle--selected')
         colorActual = color.dataset.color // elemento/seleccionar/data-color= solo tomo el color
-        
+        principalImage.src = imagenes[colorActual][0]
+
         const nombreColor = color.nextElementSibling // color es cada div.color-item__circle y color.nextElementSibling es el p
         if (stockPorColor[colorActual] === 0) {
             nombreColor.textContent = "Sin stock"
