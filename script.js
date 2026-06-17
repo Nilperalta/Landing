@@ -68,6 +68,7 @@ const principalImage = document.getElementById('img-principal');
 const btnNext = document.querySelector('.lightbox__next');
 const btnPrev = document.querySelector('.lightbox__prev');
 const btnClose = document.querySelector('.lightbox__close');
+const progressBar = document.querySelector('.lightbox__progress-bar');
 
 let indice = 0
 
@@ -76,18 +77,27 @@ principalImage.addEventListener('click', ()=>{
     lightbox.classList.toggle('lightbox--visible');
     boxImage.src = imagenes[colorActual][0];
     boxCounter.textContent = (indice + 1) + "/" + imagenes[colorActual].length;
+    let width = (1 / imagenes[colorActual].length) * 100
+    progressBar.style.width = `${width}%`
+    progressBar.style.left = `0%`
 })
 
 btnNext.addEventListener('click', ()=>{
     indice = (indice + 1) % imagenes[colorActual].length;
     boxImage.src = imagenes[colorActual][indice];
     boxCounter.textContent = (indice + 1) + "/" + imagenes[colorActual].length;
+
+    let left = (indice / imagenes[colorActual].length) * 100
+    progressBar.style.left = `${left}%`
 })
 
 btnPrev.addEventListener('click', ()=>{
     indice = (indice - 1 + imagenes[colorActual].length) % imagenes[colorActual].length;
     boxImage.src = imagenes[colorActual][indice];
     boxCounter.textContent = (indice + 1) + "/" + imagenes[colorActual].length;
+    
+    let left = (indice / imagenes[colorActual].length) * 100
+    progressBar.style.left = `${left}%`
 })
 
 
@@ -115,7 +125,7 @@ const btnMinus = document.querySelector('.counter__btn--minus')
 const counterDisplay = document.querySelector('.counter__display')
 const btnPlus = document.querySelector('.counter__btn--plus')
 
-let counter = 0;
+let counter = 1;
 
 if (counter<=9) {
     counterDisplay.textContent = `0${counter}`;
@@ -126,7 +136,7 @@ if (counter<=9) {
 
 btnMinus.addEventListener('click', ()=>{
 
-    if (counter <= 0) {
+    if (counter <= 1) {
         btnMinus.disabled = true;
 
     } else {
@@ -191,7 +201,7 @@ let colorActual = "celeste"
 btnColor.forEach(color => {
     color.addEventListener('click', () => {
         btnColor.forEach(c => c.classList.remove('color-item__circle--selected'))
-        counter = 0;
+        counter = 1;
         counterDisplay.textContent = `0${counter}`;
         btnPlus.classList.remove('counter__btn--plus--disabled')
         displayMaxUni.classList.remove('cantidad-max--visible')
@@ -199,8 +209,15 @@ btnColor.forEach(color => {
         colorActual = color.dataset.color // elemento/seleccionar/data-color= solo tomo el color
         principalImage.src = imagenes[colorActual][0]
 
+        //progress bar dinámico
+        let width = (1 / imagenes[colorActual].length) * 100
+        progressBar.style.width = `${width}%`
+        progressBar.style.left = `0%`
+
         const nombreColor = color.nextElementSibling // color es cada div.color-item__circle y color.nextElementSibling es el p
         if (stockPorColor[colorActual] === 0) {
+            counter = 0
+            counterDisplay.textContent = `0${counter}`;
             nombreColor.textContent = "Sin stock"
             containerwarning.classList.add('container-warning--visible')
         }else{
@@ -238,6 +255,11 @@ const precio = parseFloat(precioElement.textContent.replace('S/', '')) //obtiene
 const resumenCantidad = document.querySelector('.resumen-cantidad')
 const resumenTotal = document.querySelector('.resumen-total')
 
+/*captura de los botones */
+const containeractions = document.querySelector('.product-footer__actions')
+const containerCtaTalla= document.querySelector('.product-footer__btn')
+const btnComprar = document.getElementById('btn-add')
+
 let colorSeleccionado = true;   // celeste ya está por defecto
 let tallaSeleccionada = false;
 
@@ -248,17 +270,11 @@ btnCTA.addEventListener('click', ()=>{
         containerTalla.classList.remove('product-options__header--error')
         containerCounter.classList.remove('product-options__counter--error')
 
-    } else if  (tallaSeleccionada === false && counter === 0) {
-        containerError.classList.add('container-error--visible')
-        containerTalla.classList.add('product-options__header--error')
-        containerCounter.classList.add('product-options__counter--error')
-        textContainerError.textContent = "Falta seleccionar talla y cantidad"
-
-    } else if (tallaSeleccionada===false) {
+    }else if (tallaSeleccionada===false) {
         containerError.classList.add('container-error--visible')
         containerTalla.classList.add('product-options__header--error')
         containerCounter.classList.remove('product-options__counter--error')
-        textContainerError.textContent = "Falta seleccionar talla"
+        textContainerError.textContent = "Elige una talla disponible"
 
     } else if (counter === 0) {
         containerCounter.classList.add('product-options__counter--error')
@@ -271,21 +287,23 @@ btnCTA.addEventListener('click', ()=>{
         containerCounter.classList.remove('product-options__counter--error')
         containerTalla.classList.remove('product-options__header--error')
         containerError.classList.remove('container-error--visible')
-        containerResumen.classList.add('container-resumen--visible')
+        containeractions.classList.add('product-footer__actions--visible')
+        containerCtaTalla.classList.add('product-footer__btn--hidden')
 
-        if (counter >=2) {
+    } 
+})
+     
+
+/*BTN Añadir */
+
+btnComprar.addEventListener('click', ()=>{
+    containerResumen.classList.add('container-resumen--visible')
+
+    if (counter >=2) {
             resumenCantidad.textContent = `${counter} productos`
         } else {
             resumenCantidad.textContent = `${counter} producto`
         }
         
         resumenTotal.textContent = `S/${precio*counter}.00`
-        btnCTA.textContent = "Comprar ahora"
-        btnCTA.classList.add('btn--active')
-    } 
 })
-     
-
-
-
-

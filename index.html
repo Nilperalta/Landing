@@ -166,8 +166,16 @@
 
         <div class="container-error">
             <i class="fa-solid fa-circle-exclamation"></i>
-            <p class="product-footer__error">Falta seleccionar talla</p>
+            <p class="product-footer__error">Elige una talla disponible</p>
         </div>
+
+        <!--
+        <div class="resumen-detalle">
+            <div class="resumen-item">
+                <span>Celeste · XS</span>
+                <i class="fa-solid fa-trash"></i>
+            </div>
+        </div>-->
 
         <div class="container-resumen">
             <div class="resumen-info">
@@ -179,7 +187,12 @@
         </div>
 
         <div class="product-footer__btn">
-            <button id="btn-cta" class="btn--disabled">Seleccionar opciones</button>
+            <button id="btn-cta" class="btn--disabled">Seleccionar talla</button>
+        </div>
+
+        <div class="product-footer__actions">
+            <button id="btn-add" class="btn--secondary">Añadir</button>
+            <button id="btn-finalizar" class="btn--active">Finalizar compra</button>
         </div>
     </div>
 
@@ -195,6 +208,10 @@
         <div class="lightbox__imgbox">
             <div class="lightbox__counter">1/3</div>
             <img class="lightbox__img" src="" alt="">
+
+            <div class="lightbox__progress">
+                <div class="lightbox__progress-bar"></div>
+            </div>
         </div>
 
         <button class="lightbox__prev">

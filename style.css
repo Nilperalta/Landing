@@ -163,7 +163,7 @@ body {
 }
 
 .product-options__header--error{
-    background-color: #FFEBEE;
+    background-color: #FFF1DB;
 }
 
 .product-options__header label{
@@ -540,7 +540,7 @@ body {
     width: 100%;
     padding: 8px 24px 8px 24px;
     gap: 4px;
-    background-color: #FFEBEE;
+    background-color: #FFF0DB;
 }
 
 .container-error--visible{
@@ -548,13 +548,13 @@ body {
 }
 
 .container-error p{
-    color: #EF5350;
+    color: #795520;
     font-size: 14px;
     text-transform: capitalize;
 }
 
 .container-error i{
-    color: #E57373;
+    color: #E59319;
 }
 
 .container-resumen{
@@ -598,6 +598,44 @@ body {
     padding: 8px 24px 32px 24px;
 }
 
+.product-footer__btn--hidden {
+    display: none;
+}
+
+.product-footer__actions{
+    /*border: 2px solid red;*/
+    border-top: 0.5px solid #E7E7E7;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 8px 16px 8px 16px;
+    margin-bottom: 24px;
+}
+
+.product-footer__actions--visible {
+    display: flex;
+}
+
+.product-footer__actions .btn--secondary{
+    border: 1.8px solid #0A0000;
+    color: #1C1C1C;
+    background-color: #FFFFFF;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+    flex: 0 0 110px;
+}
+
+.product-footer__actions .btn--active{
+    background-color: #0A0000;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+    flex: 1;
+}
+
 .product-footer button{
     /*border: 2px solid red;*/
     border: none;
@@ -608,12 +646,9 @@ body {
     color: #F7F7F7;
     font-size: 20px;
     font-weight: bold;
-    background-color: #686262;
+    background-color: #7F7F7F
 }
 
-.product-footer .btn--active {
-    background-color: #0A0000;
-}
 
 
 /*--------------Caja de la iamgen--------------------*/
@@ -668,6 +703,26 @@ body {
     margin-top: 64px;
     flex: 1;
     overflow: hidden;
+}
+
+.lightbox__progress{
+    /*border: 1px solid pink;*/
+    position: absolute;
+    bottom: 0%;
+    height: 3px;
+    background-color: #0F4252;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.lightbox__progress-bar{
+    /*border: 1px solid pink*/
+    position: absolute;
+    height: 100%;
+    width: 0%;
+    background-color: #19B2E1;
+    border-radius: 4px;
+    transition: left 0.3s ease;
 }
 
 .lightbox__counter {
