@@ -229,6 +229,7 @@ btnColor.forEach(color => {
 
 /*Seleccionar talla */
 
+
 const btnTalla = document.querySelectorAll('.tallas .talla--disponible')
 
 btnTalla.forEach(talla => {
@@ -236,6 +237,10 @@ btnTalla.forEach(talla => {
         btnTalla.forEach(t=> t.classList.remove('talla--selected'))
         talla.classList.add('talla--selected')
         tallaSeleccionada = true
+        containeractions.classList.add('product-footer__actions--visible')
+        containerCtaTalla.classList.add('product-footer__btn--hidden')
+        containerTalla.classList.remove('product-options__header--error')
+        containerError.classList.remove('container-error--visible')
     })
 });
 
@@ -287,9 +292,7 @@ btnCTA.addEventListener('click', ()=>{
         containerCounter.classList.remove('product-options__counter--error')
         containerTalla.classList.remove('product-options__header--error')
         containerError.classList.remove('container-error--visible')
-        containeractions.classList.add('product-footer__actions--visible')
-        containerCtaTalla.classList.add('product-footer__btn--hidden')
-
+    
     } 
 })
      

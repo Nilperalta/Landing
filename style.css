@@ -302,7 +302,7 @@ body {
 .cantidad-max{
     /*border: 2px solid red;*/
     display: none;
-    color: #686262;
+    color: #795520;
     font-size: 12px;
     font-weight: 500;
 }
@@ -485,7 +485,7 @@ body {
 }
 
 .product-footer{
-   /* border: 2px solid blue;*/
+    /*border: 2px solid blue;*/
     position: fixed;
     bottom: 0;
     left: 50%;
@@ -493,7 +493,7 @@ body {
     width: 100%;
     /*width: 390px;
     max-width: 100%;*/
-    background: #F5F5F5;
+    background: #FFFFFF;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -528,10 +528,7 @@ body {
     font-size: 14px;
 
 }
-
-
-
-
+    
 .container-error{
     /*border: 2px solid red;*/
     display: none;
@@ -556,6 +553,60 @@ body {
 .container-error i{
     color: #E59319;
 }
+
+
+.resumen-detalle{
+    /*border: 2px solid red;*/
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 16px 24px 16px 16px;
+}
+
+.resumen-detalle--visible{
+    display: flex;
+}
+
+.resumen-detalle__handle {
+    /*border: 2px solid blue;*/
+    width: 64px;
+    height: 5px;
+    background-color: #7C8B9D;
+    border-radius: 4px;
+    margin-bottom: 24px;
+}
+
+.resumen-row {
+    /*border: 2px solid green;*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 11px 8px 11px 9px;
+}
+
+.resumen-detalle .resumen-item--color-talla{
+    /*border: 2px solid yellow;*/
+    display: flex;
+    align-items: center;
+    /*justify-content: ;*/
+}
+
+.resumen-detalle .resumen-item--color-talla span{
+    /*border: 2px solid red;*/
+    color: #474747;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.resumen-detalle .resumen-item--i i{
+    /*border: 2px solid pink;*/
+    color: #1C1B1F;
+    /*margin-right: 8px;*/
+}
+
 
 .container-resumen{
     /*border: 2px solid red;*/
@@ -593,9 +644,11 @@ body {
 }
 
 .product-footer__btn{
-    /*border: 2px solid black;*/
+    /*border: 2px solid green;*/
+    border-top: 0.5px solid #E7E7E7;
     width: 100%;
-    padding: 8px 24px 32px 24px;
+    padding: 12px 24px 32px 24px;
+    background-color: #FFFFFF;
 }
 
 .product-footer__btn--hidden {
@@ -610,8 +663,7 @@ body {
     align-items: center;
     gap: 8px;
     width: 100%;
-    padding: 8px 16px 8px 16px;
-    margin-bottom: 24px;
+    padding: 12px 16px 32px 16px;
 }
 
 .product-footer__actions--visible {
