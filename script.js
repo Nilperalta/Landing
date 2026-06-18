@@ -234,16 +234,16 @@ const btnTalla = document.querySelectorAll('.tallas .talla--disponible')
 
 btnTalla.forEach(talla => {
     talla.addEventListener('click', ()=>{
-        btnTalla.forEach(t=> t.classList.remove('talla--selected'))
+        btnTalla.forEach(t => t.classList.remove('talla--selected'))
         talla.classList.add('talla--selected')
         tallaSeleccionada = true
+        tallaActual = talla.dataset.talla
         containeractions.classList.add('product-footer__actions--visible')
         containerCtaTalla.classList.add('product-footer__btn--hidden')
         containerTalla.classList.remove('product-options__header--error')
         containerError.classList.remove('container-error--visible')
     })
 });
-
 /*Errores*/
 
 const btnCTA = document.getElementById('btn-cta')
@@ -263,10 +263,12 @@ const resumenTotal = document.querySelector('.resumen-total')
 /*captura de los botones */
 const containeractions = document.querySelector('.product-footer__actions')
 const containerCtaTalla= document.querySelector('.product-footer__btn')
-const btnComprar = document.getElementById('btn-add')
+const btnAdd = document.getElementById('btn-add')
 
 let colorSeleccionado = true;   // celeste ya está por defecto
 let tallaSeleccionada = false;
+let tallaActual = "xs";  //
+let carrito = [];        // array para guardar productos
 
 btnCTA.addEventListener('click', ()=>{
 
@@ -299,14 +301,88 @@ btnCTA.addEventListener('click', ()=>{
 
 /*BTN Añadir */
 
-btnComprar.addEventListener('click', ()=>{
-    containerResumen.classList.add('container-resumen--visible')
+const resumenDetalle = document.querySelector('.resumen-detalle');
 
-    if (counter >=2) {
-            resumenCantidad.textContent = `${counter} productos`
-        } else {
-            resumenCantidad.textContent = `${counter} producto`
+btnAdd.addEventListener('click', ()=>{
+
+    containerResumen.classList.add('container-resumen--visible');
+
+    carrito.push({
+        color: colorActual,
+        talla: tallaActual,
+        cantidad: counter
+    });
+
+    const totalUnidades = carrito.reduce(
+        (acc, item) => acc + item.cantidad, 0
+    );
+
+    const totalPrecio = carrito.reduce(
+        (acc, item) => acc + item.cantidad * precio, 0
+    );
+
+    resumenCantidad.textContent =
+        totalUnidades === 1
+        ? `${totalUnidades} producto`
+        : `${totalUnidades} productos`;
+
+    resumenTotal.textContent = `S/${totalPrecio}.00`;
+
+    renderCarrito();
+});
+
+
+const renderCarrito = () => {
+    const handle = resumenDetalle.querySelector('.resumen-detalle__handle')
+    resumenDetalle.innerHTML = ''
+    resumenDetalle.appendChild(handle)
+
+    carrito.forEach((item, index) => {
+        const fila = document.createElement('div')
+        fila.classList.add('resumen-row')
+        fila.innerHTML = `
+            <div class="resumen-item--color-talla">
+                <span>• ${item.color} · ${item.talla} · x${item.cantidad}</span>
+            </div>
+            <div class="resumen-item--i">
+                <i class="fa-solid fa-trash" data-index="${index}"></i>
+            </div>
+        `
+        resumenDetalle.appendChild(fila)
+
+        fila.querySelector('i').addEventListener('click', () => {
+
+        // devolver stock
+        stockPorColor[item.color] += item.cantidad
+
+        // eliminar producto
+        carrito.splice(index, 1)
+
+        renderCarrito()
+
+        const totalUnidades = carrito.reduce(
+            (acc, item) => acc + item.cantidad, 0
+        )
+
+        const totalPrecio = carrito.reduce(
+            (acc, item) => acc + item.cantidad * precio, 0
+        )
+
+        resumenCantidad.textContent =
+            totalUnidades === 1
+            ? `${totalUnidades} producto`
+            : `${totalUnidades} productos`
+
+        resumenTotal.textContent = `S/${totalPrecio}.00`
+
+        if (carrito.length === 0) {
+            containerResumen.classList.remove('container-resumen--visible')
+            resumenDetalle.classList.remove('resumen-detalle--visible')
         }
-        
-        resumenTotal.textContent = `S/${precio*counter}.00`
-})
+    })
+    })
+}
+
+containerResumen.addEventListener('click', () => {
+    resumenDetalle.classList.toggle('resumen-detalle--visible');
+});

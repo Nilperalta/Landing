@@ -563,6 +563,8 @@ body {
     align-items: center;
     width: 100%;
     padding: 16px 24px 16px 16px;
+    background-color: #F2F2F2;
+    border-radius: 16px 16px 0 0;
 }
 
 .resumen-detalle--visible{
