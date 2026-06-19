@@ -57,6 +57,14 @@ const imagenes = {
     ],
     olivo: [
         'images/image_c3.png'
+    ],
+
+    negro: [
+        'images/image_c4.png'
+    ],
+
+    morado: [
+        'images/image_c5.png'
     ]
 }
 
@@ -195,6 +203,7 @@ btnPlus.addEventListener('click', ()=>{
 
 const btnColor = document.querySelectorAll('.color-item__circle')
 const containerwarning = document.querySelector('.container-warning')
+const tallasContainer = document.querySelector('.tallas')
 let colorActual = "celeste"
 
 
@@ -209,6 +218,12 @@ btnColor.forEach(color => {
         colorActual = color.dataset.color // elemento/seleccionar/data-color= solo tomo el color
         principalImage.src = imagenes[colorActual][0]
 
+        /*Para quitar la selección de la talla*/
+        btnTalla.forEach(t => t.classList.remove('talla--selected'))
+        tallaSeleccionada = false
+
+        btnAdd.classList.add('btn--secondary--disabled')
+
         //progress bar dinámico
         let width = (1 / imagenes[colorActual].length) * 100
         progressBar.style.width = `${width}%`
@@ -220,8 +235,16 @@ btnColor.forEach(color => {
             counterDisplay.textContent = `0${counter}`;
             nombreColor.textContent = "Sin stock"
             containerwarning.classList.add('container-warning--visible')
+
+            btnAdd.textContent = 'Sin stock'
+            btnCTA.textContent ='Sin stock'
+            
+            tallasContainer.classList.add('tallas--desactivado')
         }else{
             containerwarning.classList.remove('container-warning--visible')
+            btnAdd.textContent = 'Añadir'
+            btnCTA.textContent ='Seleccionar talla' 
+            tallasContainer.classList.remove('tallas--desactivado') 
         }
     })
 })
@@ -242,6 +265,7 @@ btnTalla.forEach(talla => {
         containerCtaTalla.classList.add('product-footer__btn--hidden')
         containerTalla.classList.remove('product-options__header--error')
         containerError.classList.remove('container-error--visible')
+        btnAdd.classList.remove('btn--secondary--disabled') 
     })
 });
 /*Errores*/
@@ -267,7 +291,7 @@ const btnAdd = document.getElementById('btn-add')
 
 let colorSeleccionado = true;   // celeste ya está por defecto
 let tallaSeleccionada = false;
-let tallaActual = "xs";  //
+let tallaActual = "";  //
 let carrito = [];        // array para guardar productos
 
 btnCTA.addEventListener('click', ()=>{
@@ -304,6 +328,17 @@ btnCTA.addEventListener('click', ()=>{
 const resumenDetalle = document.querySelector('.resumen-detalle');
 
 btnAdd.addEventListener('click', ()=>{
+    
+    if (stockPorColor[colorActual] === 0) {
+        containerError.classList.remove('container-error--visible')
+        return
+    }
+
+    if (tallaSeleccionada === false) {
+        containerError.classList.add('container-error--visible')
+        textContainerError.textContent = 'Falta seleccionar una talla'
+        return
+    }
 
     const unidadesEnCarrito = carrito
         .filter(item => item.color === colorActual)
