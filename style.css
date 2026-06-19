@@ -589,6 +589,14 @@ body {
     padding: 11px 8px 11px 9px;
 }
 
+.resumen-vacio-container {
+    /*border: 2px solid green;*/
+    color: #7F7F7F;
+    font-size: 14px;
+    width: 100%;
+    text-align: center;
+}
+
 .resumen-detalle .resumen-item--color-talla{
     /*border: 2px solid yellow;*/
     display: flex;

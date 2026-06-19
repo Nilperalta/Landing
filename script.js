@@ -331,6 +331,18 @@ const renderCarrito = () => {
     resumenDetalle.innerHTML = ''
     resumenDetalle.appendChild(handle)
 
+    if (carrito.length === 0) {
+        const vacio = document.createElement('div')
+        vacio.classList.add('resumen-vacio-container')
+        vacio.innerHTML = `<p class="resumen-vacio">No hay productos seleccionados</p>`
+        resumenDetalle.appendChild(vacio)
+        setTimeout(() => {
+           resumenDetalle.classList.remove('resumen-detalle--visible')
+           containerResumen.classList.remove('container-resumen--visible')
+        }, 2000);
+        return
+    }
+
     carrito.forEach((item, index) => {
         const fila = document.createElement('div')
         fila.classList.add('resumen-row')
@@ -343,37 +355,24 @@ const renderCarrito = () => {
             </div>
         `
         resumenDetalle.appendChild(fila)
+        
+        /*guardando el icono de eliminar*/
+        const icono = fila.querySelector('i')
+        icono.addEventListener('click', () => {
+            icono.style.color= '#E57373';
+            
+            setTimeout(() => {
+                stockPorColor[item.color] += item.cantidad
+                carrito.splice(index, 1)
+                renderCarrito()
 
-        fila.querySelector('i').addEventListener('click', () => {
+                const totalUnidades = carrito.reduce((acc, item) => acc + item.cantidad, 0)
+                const totalPrecio = carrito.reduce((acc, item) => acc + item.cantidad * precio, 0)
 
-        // devolver stock
-        stockPorColor[item.color] += item.cantidad
-
-        // eliminar producto
-        carrito.splice(index, 1)
-
-        renderCarrito()
-
-        const totalUnidades = carrito.reduce(
-            (acc, item) => acc + item.cantidad, 0
-        )
-
-        const totalPrecio = carrito.reduce(
-            (acc, item) => acc + item.cantidad * precio, 0
-        )
-
-        resumenCantidad.textContent =
-            totalUnidades === 1
-            ? `${totalUnidades} producto`
-            : `${totalUnidades} productos`
-
-        resumenTotal.textContent = `S/${totalPrecio}.00`
-
-        if (carrito.length === 0) {
-            containerResumen.classList.remove('container-resumen--visible')
-            resumenDetalle.classList.remove('resumen-detalle--visible')
-        }
-    })
+                resumenCantidad.textContent = totalUnidades === 1 ? `${totalUnidades} producto` : `${totalUnidades} productos`
+                resumenTotal.textContent = `S/${totalPrecio}.00`
+            }, 300)
+        })
     })
 }
 
