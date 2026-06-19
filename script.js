@@ -305,31 +305,25 @@ const resumenDetalle = document.querySelector('.resumen-detalle');
 
 btnAdd.addEventListener('click', ()=>{
 
-    containerResumen.classList.add('container-resumen--visible');
+    const unidadesEnCarrito = carrito
+        .filter(item => item.color === colorActual)
+        .reduce((acc, item) => acc + item.cantidad, 0)
 
-    carrito.push({
-        color: colorActual,
-        talla: tallaActual,
-        cantidad: counter
-    });
+    if (unidadesEnCarrito + counter > stockPorColor[colorActual]) {
+        return
+    }
 
-    const totalUnidades = carrito.reduce(
-        (acc, item) => acc + item.cantidad, 0
-    );
+    containerResumen.classList.add('container-resumen--visible')
+    carrito.push({ color: colorActual, talla: tallaActual, cantidad: counter })
 
-    const totalPrecio = carrito.reduce(
-        (acc, item) => acc + item.cantidad * precio, 0
-    );
+    const totalUnidades = carrito.reduce((acc, item) => acc + item.cantidad, 0)
+    const totalPrecio = carrito.reduce((acc, item) => acc + item.cantidad * precio, 0)
 
-    resumenCantidad.textContent =
-        totalUnidades === 1
-        ? `${totalUnidades} producto`
-        : `${totalUnidades} productos`;
+    resumenCantidad.textContent = totalUnidades === 1 ? `${totalUnidades} producto` : `${totalUnidades} productos`
+    resumenTotal.textContent = `S/${totalPrecio}.00`
 
-    resumenTotal.textContent = `S/${totalPrecio}.00`;
-
-    renderCarrito();
-});
+    renderCarrito()
+})
 
 
 const renderCarrito = () => {
