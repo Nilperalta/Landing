@@ -122,8 +122,10 @@ const footer = document.querySelector('.product-footer');
 window.addEventListener('scroll', ()=>{
     if (window.scrollY>10) {
         footer.classList.add('product-footer--hidden')
+        tooltipInfo.classList.add('tooltip-info--arriba')
     } else {
         footer.classList.remove('product-footer--hidden')
+        tooltipInfo.classList.remove('tooltip-info--arriba')
     }
 })
 
@@ -165,10 +167,10 @@ btnMinus.addEventListener('click', ()=>{
 
 const stockPorColor = {
     celeste: 3,
-    rosado: 5,
+    rosado: 3,
     olivo: 0,
-    negro: 4,
-    morado: 6
+    negro: 3,
+    morado: 3
 }
 
 const displayMaxUni = document.querySelector('.cantidad-max')
@@ -411,6 +413,9 @@ const renderCarrito = () => {
     })
 }
 
+const tooltipInfo = document.querySelector('.tooltip-info')
+
 containerResumen.addEventListener('click', () => {
     resumenDetalle.classList.toggle('resumen-detalle--visible');
+    tooltipInfo.classList.toggle('tooltip-info--visible')
 });
