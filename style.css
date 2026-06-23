@@ -199,7 +199,9 @@ body {
     
 }
 .color-item__circle--selected {
-    border: 1.5px solid #000000;
+    /*border: 1.5px solid #1C1C1C;*/
+    outline: 2px solid #1C1C1C;
+    outline-offset: 3px;
 }
 
 .color-item__circle {
