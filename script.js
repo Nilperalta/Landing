@@ -237,6 +237,7 @@ btnColor.forEach(color => {
             counterDisplay.textContent = `0${counter}`;
             nombreColor.textContent = "Sin stock"
             containerwarning.classList.add('container-warning--visible')
+            containerError.classList.remove('container-error--visible')
 
             btnAdd.textContent = 'Sin stock'
             btnCTA.textContent ='Sin stock'
@@ -247,6 +248,8 @@ btnColor.forEach(color => {
             btnAdd.textContent = 'Añadir'
             btnCTA.textContent ='Seleccionar talla' 
             tallasContainer.classList.remove('tallas--desactivado') 
+            containerError.classList.add('container-error--visible')
+            textContainerError.textContent = 'Últimas unidades. ¡Compra ya!'
         }
     })
 })
