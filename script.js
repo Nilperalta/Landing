@@ -136,6 +136,7 @@ const counterDisplay = document.querySelector('.counter__display')
 const btnPlus = document.querySelector('.counter__btn--plus')
 
 let counter = 1;
+btnMinus.classList.add('counter__btn--minus--disabled')
 
 if (counter<=9) {
     counterDisplay.textContent = `0${counter}`;
@@ -148,6 +149,7 @@ btnMinus.addEventListener('click', ()=>{
 
     if (counter <= 1) {
         btnMinus.disabled = true;
+        btnMinus.classList.add('counter__btn--minus--disabled')
 
     } else {
         counter--;
@@ -160,6 +162,8 @@ btnMinus.addEventListener('click', ()=>{
         } else {
             counterDisplay.textContent = counter;
         }
+
+
     }
 })
 
@@ -180,6 +184,7 @@ btnPlus.addEventListener('click', ()=>{
 
     if (counter < stockPorColor[colorActual]) {
         counter++
+        btnMinus.classList.remove('counter__btn--minus--disabled')
 
         if (counter <= 9) {
             counterDisplay.textContent = `0${counter}`;
