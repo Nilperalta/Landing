@@ -27,6 +27,20 @@
             <h2>Resumen</h2>
             <i class="fa-solid fa-chevron-down"></i>
         </div>
+
+        <div class="checkout-resumen__detalle">
+            <img src="images/image_p.png" alt="Camisa bootcut">
+            <div class="checkout-resumen__info">
+                <p class="resumen-nombre">Camisa <br> Bootcut</p>
+
+                <div class="checkout-resumen__atributos">
+                    <span>Color: <span class="resumen-color">Celeste</span></span>
+                    <span>Talla: <span class="resumen-talla">M</span></span>
+                    <span>Cantidad: <span class="resumen-cantidad">01</span></span>
+                </div>
+            </div>
+        </div>
+
         <div class="checkout-resumen__total">
             <span>Total</span>
             <span class="total-price">S/ 120.00</span>
@@ -61,6 +75,39 @@
             <h2>Entrega</h2>
             <i class="fa-solid fa-chevron-down"></i>
         </div>
+
+        <div class="checkout-entrega__content">
+
+            <div class="checkout-entrega__opciones">
+                <label>
+                    <input type="radio" name="entrega" value="delivery" checked> Delivery
+                </label>
+                <label>
+                    <input type="radio" name="entrega" value="recojo"> Recojo
+                </label>
+            </div>
+
+            <div class="checkout-entrega__fields">
+                <div class="checkout-field">
+                    <label>Departamento</label>
+                    <select>
+                        <option value="">Seleccionar</option>
+                    </select>
+                </div>
+
+                <div class="checkout-field">
+                    <label>Distrito</label>
+                    <input type="text" placeholder="Surco">
+                </div>
+
+                <div class="checkout-field">
+                    <label>Dirección</label>
+                    <input type="text" placeholder="Av. Alfredo Benavides 778">
+                </div>
+            </div>
+
+        </div>
+
     </section>
 
   </div>
