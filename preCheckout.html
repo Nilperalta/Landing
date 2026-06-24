@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pre Checkout</title>
+    <link rel="stylesheet" href="preCheckout.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- Header -->
+    <header class="checkout-header">
+        <div class="checkout-header__logo">
+            <img src="images/Ellipse 3.png" alt="Mango">
+            <span>Mango</span>
+        </div>
+        <a class="checkout-header__volver">Volver</a>
+    </header>
+
+    <!-- Resumen -->
+    <section class="checkout-resumen">
+        <div class="checkout-resumen__header">
+            <h2>Resumen</h2>
+            <i class="fa-solid fa-chevron-down"></i>
+        </div>
+        <div class="checkout-resumen__total">
+            <span>Total</span>
+            <span class="total-price">S/ 120.00</span>
+        </div>
+    </section>
+
+    <!-- Datos comprador -->
+    <section class="checkout-datos">
+        
+        <h2>Datos comprador</h2>
+
+        <div class="checkout-column">
+            <div class="checkout-field">
+                <label>Nombre</label>
+                <input type="text" placeholder="Agregar">
+            </div>
+            <div class="checkout-field">
+                <label>Celular</label>
+                <input type="text" placeholder="Agregar">
+            </div>
+            <div class="checkout-field">
+                <label>Mail</label>
+                <input type="email" placeholder="Agregar">
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Entrega -->
+    <section class="checkout-entrega">
+        <div class="checkout-entrega__header">
+            <h2>Entrega</h2>
+            <i class="fa-solid fa-chevron-down"></i>
+        </div>
+    </section>
+
+  </div>
+
+  <!-- Footer fijo -->
+  <div class="checkout-footer">
+      <button id="btn-pagar" disabled>Ir a pagar</button>
+  </div>
+
+
+
+    <script src="preCheckout.js"></script>
+</body>
+</html>

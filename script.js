@@ -427,3 +427,17 @@ containerResumen.addEventListener('click', () => {
     resumenDetalle.classList.toggle('resumen-detalle--visible');
     tooltipInfo.classList.toggle('tooltip-info--visible')
 });
+
+
+/* BTN Finalizar compra*/
+const btnFinalizar = document.getElementById('btn-finalizar')
+
+btnFinalizar.addEventListener('click', () => {
+    if (carrito.length === 0) {
+        return
+    }
+    
+    const total = resumenTotal.textContent
+    localStorage.setItem('totalCarrito', total)
+    window.location.href = 'preCheckout.html'
+})
