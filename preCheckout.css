@@ -125,6 +125,17 @@ body {
     flex-direction: column;
 }
 
+.resumen-trash {
+    color: #7F7F7F;
+    font-size: 16px;
+    align-self: center;
+    cursor: pointer;
+}
+
+.resumen-trash--hidden {
+    display: none;
+}
+
 /*.checkout-resumen__detalle img{
     height: 100%;
     width: 112px;

@@ -26,6 +26,7 @@ if (carrito && carrito.length > 0) {
                     <span>Cantidad: <span>${item.cantidad}</span></span>
                 </div>
             </div>
+            <i class="fa-solid fa-trash resumen-trash ${carrito.length <= 1 ? 'resumen-trash--hidden' : ''}"></i>
         `
         contenedor.appendChild(fila)
     })
@@ -195,12 +196,14 @@ btnCerrarModal.addEventListener('click', ()=>{
 btnVolver.addEventListener('click', () => {
     if (carrito.length === 1) {
         modalVolver.classList.add('modal-volver--visible')
+         localStorage.setItem('vieneDeVolver', 'true') 
     } else {
         window.location.href = 'index.html'
     }
 })
 
 btnOpcionModificar.addEventListener('click', ()=>{
+    localStorage.setItem('vieneDeVolver', 'true') 
     window.location.href = 'index.html'
 })
 

@@ -429,19 +429,23 @@ containerResumen.addEventListener('click', () => {
 });
 
 
-const carritoGuardado = JSON.parse(localStorage.getItem('carritoData'))
+if (localStorage.getItem('vieneDeVolver') === 'true') {
+    localStorage.removeItem('vieneDeVolver')
+    
+    const carritoGuardado = JSON.parse(localStorage.getItem('carritoData'))
 
-if (carritoGuardado && carritoGuardado.length > 0) {
-    carrito = carritoGuardado
+    if (carritoGuardado && carritoGuardado.length > 0) {
+        carrito = carritoGuardado
 
-    const totalUnidades = carrito.reduce((acc, item) => acc + item.cantidad, 0)
-    const totalPrecio = carrito.reduce((acc, item) => acc + item.cantidad * precio, 0)
+        const totalUnidades = carrito.reduce((acc, item) => acc + item.cantidad, 0)
+        const totalPrecio = carrito.reduce((acc, item) => acc + item.cantidad * precio, 0)
 
-    resumenCantidad.textContent = totalUnidades === 1 ? `${totalUnidades} producto` : `${totalUnidades} productos`
-    resumenTotal.textContent = `S/${totalPrecio}.00`
+        resumenCantidad.textContent = totalUnidades === 1 ? `${totalUnidades} producto` : `${totalUnidades} productos`
+        resumenTotal.textContent = `S/${totalPrecio}.00`
 
-    containerResumen.classList.add('container-resumen--visible')
-    renderCarrito()
+        containerResumen.classList.add('container-resumen--visible')
+        renderCarrito()
+    }
 }
 
 
