@@ -137,17 +137,65 @@
 
   </div>
 
-  <!-- Footer fijo -->
-  <div class="checkout-footer">
-        <div class="checkout-footer__alert">
-            <i class="fa-solid fa-circle-exclamation"></i>
-            <p>Completa tus datos para continuar</p>
-        </div>
-        <div class="checkout-footer__btn">
-            <button id="btn-pagar">Ir a pagar</button>
-        </div>
-  </div>
+    <!-- Footer fijo -->
+    <div class="checkout-footer">
+            <div class="checkout-footer__alert">
+                <i class="fa-solid fa-circle-exclamation"></i>
+                <p>Completa tus datos para continuar</p>
+            </div>
+            <div class="checkout-footer__btn">
+                <button id="btn-pagar">Ir a pagar</button>
+            </div>
+    </div>
 
+    <!-- Modal Volver -->
+    <div class="modal-volver" id="modal-volver">
+
+        <div class="modal-volver__backdrop"></div>
+        <div class="modal-volver__card">
+
+            <button class="modal-volver__close" id="modal-close">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <p class="modal-volver__pregunta">¿Qué deseas hacer con tu compra?</p>
+
+            <div class="modal-volver__opciones">
+
+                <div class="modal-volver__item" id="opcion-modificar">
+                    <div class="modal-volver__texto">
+                        <span class="modal-volver__titulo">Modificar mi orden</span>
+                        <span class="modal-volver__desc">Regresa al producto para cambiar tallas o agregar más unidades</span>
+                    </div>
+                    <button class="modal-volver__arrow">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <div class="modal-volver__item" id="opcion-continuar">
+                    <div class="modal-volver__texto">
+                        <span class="modal-volver__titulo">Continuar con el pago</span>
+                        <span class="modal-volver__desc">Sigue llenando tus datos para finalizar tu pedido.</span>
+                    </div>
+                    <button class="modal-volver__arrow">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <div class="modal-volver__item" id="opcion-vaciar">
+                    <div class="modal-volver__texto">
+                        <span class="modal-volver__titulo">Vaciar carrito y salir</span>
+                        <span class="modal-volver__desc">Se eliminarán los productos seleccionados de tu bolsa.</span>
+                    </div>
+                    <button class="modal-volver__arrow">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
 
 
     <script src="preCheckout.js"></script>

@@ -37,13 +37,21 @@ const btnDesplegableResumen = document.querySelector('.checkout-resumen__header'
 const detalleResumen = document.querySelector('.checkout-resumen__detalle')
 const btnDesplegableEntrega = document.querySelector('.checkout-entrega__header')
 const detalleEntrega = document.querySelector('.checkout-entrega__content')
+const iconEntrega  = document.querySelector('.checkout-entrega__header i')
+const iconResumen = document.querySelector('.checkout-resumen__header i')
 
 btnDesplegableResumen.addEventListener('click', ()=>{
     detalleResumen.classList.toggle('checkout-resumen__detalle--visible')
+    btnDesplegableResumen.classList.toggle('checkout-entrega__header--active');
+    iconResumen.classList.toggle('fa-chevron-down')
+    iconResumen.classList.toggle('fa-chevron-up')
 })
 
 btnDesplegableEntrega.addEventListener('click', ()=>{
     detalleEntrega.classList.toggle('checkout-entrega__content--visible')
+    btnDesplegableEntrega.classList.toggle('checkout-entrega__header--active');
+    iconEntrega.classList.toggle('fa-chevron-down')
+    iconEntrega.classList.toggle('fa-chevron-up')
 })
 
 
@@ -85,7 +93,12 @@ const iconoCelular = document.querySelector('#input-celular').closest('.input-wr
 btnPagar.addEventListener('click', ()=>{
     if (inputNombre.value === "" || inputCelular.value === "" || inputMail.value === "" || inputDepartamento.value === "" || inputDistrito.value === "" || inputDireccion.value === "") {
         alertFooter.classList.add('checkout-footer__alert--visible')
-    } else {
+    
+    }else if (inputNombre.value && inputCelular.value && inputMail.value && inputDepartamento.value && inputDistrito.value && inputDireccion.value){
+        btnPagar.textContent = "Abriendo pago..."
+    } 
+    
+    else {
         alertFooter.classList.remove('checkout-footer__alert--visible')
     }
 })
@@ -168,3 +181,35 @@ inputDireccion.addEventListener('input', () => {
 });
 
 
+const btnVolver = document.querySelector('.checkout-header__volver')
+const modalVolver = document.getElementById('modal-volver')
+const btnCerrarModal =  document.getElementById('modal-close')
+const btnOpcionModificar =  document.getElementById('opcion-modificar')
+const btnOpcionContinuar = document.getElementById('opcion-continuar')
+const btnOpcionVaciar = document.getElementById('opcion-vaciar')
+
+btnCerrarModal.addEventListener('click', ()=>{
+    modalVolver.classList.remove('modal-volver--visible')
+})
+
+btnVolver.addEventListener('click', () => {
+    if (carrito.length === 1) {
+        modalVolver.classList.add('modal-volver--visible')
+    } else {
+        window.location.href = 'index.html'
+    }
+})
+
+btnOpcionModificar.addEventListener('click', ()=>{
+    window.location.href = 'index.html'
+})
+
+btnOpcionContinuar.addEventListener('click', ()=>{
+    modalVolver.classList.remove('modal-volver--visible')
+})
+
+btnOpcionVaciar.addEventListener('click', ()=>{
+    localStorage.removeItem('carritoData')
+    localStorage.removeItem('totalCarrito')
+    window.location.href = 'index.html'
+})
