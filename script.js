@@ -48,7 +48,7 @@ btnVerMas.addEventListener('click', ()=>{
 const imagenes = {
 
     celeste: [
-        'images/image_p1.png',
+        'images/image_p.png',
         'images/image_p2.png',
         'images/image_p3.png'
     ],
@@ -439,5 +439,8 @@ btnFinalizar.addEventListener('click', () => {
     
     const total = resumenTotal.textContent
     localStorage.setItem('totalCarrito', total)
+    localStorage.setItem('carritoData', JSON.stringify(carrito))
+    localStorage.setItem('imagenProducto', imagenes[colorActual][0])
+    localStorage.setItem('imagenesData', JSON.stringify(imagenes))
     window.location.href = 'preCheckout.html'
 })

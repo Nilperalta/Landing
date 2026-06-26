@@ -53,17 +53,37 @@
         <h2>Datos comprador</h2>
 
         <div class="checkout-column">
+
             <div class="checkout-field">
                 <label>Nombre</label>
-                <input type="text" placeholder="Agregar">
+                <div class="input-wrapper">
+                    <input type="text" id="input-nombre" placeholder="Agregar">
+                    <i class="fa-solid fa-circle-exclamation input-icon-error"></i>
+                </div>
+                <span class="field-error" id="error-nombre"></span>
             </div>
+
             <div class="checkout-field">
                 <label>Celular</label>
-                <input type="text" placeholder="Agregar">
+                <div class="input-wrapper">
+                    <div class="input-celular-wrapper">
+                        <span class="celular-prefix">+51</span>
+                        <input type="text" id="input-celular" placeholder="999 999 999" maxlength="9">
+                    </div>
+                        <i class="fa-solid fa-circle-exclamation input-icon-error"></i>
+                </div>
+                 <span class="field-error" id="error-celular"></span>
             </div>
+
             <div class="checkout-field">
                 <label>Mail</label>
-                <input type="email" placeholder="Agregar">
+
+                <div class="input-wrapper">
+                    <input type="email" id="input-mail" placeholder="Agregar">
+                    <i class="fa-solid fa-circle-exclamation input-icon-error"></i>
+                </div>
+
+                <span class="field-error" id="error-mail"></span>
             </div>
         </div>
 
@@ -90,19 +110,24 @@
             <div class="checkout-entrega__fields">
                 <div class="checkout-field">
                     <label>Departamento</label>
-                    <select>
+                    <select id="input-departamento">
                         <option value="">Seleccionar</option>
+                        <option value="lima">Lima</option>
+                        <option value="arequipa">Arequipa</option>
+                        <option value="cusco">Cusco</option>
+                        <option value="piura">Piura</option>
+                        <option value="trujillo">Trujillo</option>
                     </select>
                 </div>
 
                 <div class="checkout-field">
                     <label>Distrito</label>
-                    <input type="text" placeholder="Surco">
+                    <input type="text" id="input-distrito" placeholder="Surco">
                 </div>
 
                 <div class="checkout-field">
                     <label>Dirección</label>
-                    <input type="text" placeholder="Av. Alfredo Benavides 778">
+                    <input type="text" id="input-direccion" placeholder="Av. Alfredo Benavides 778">
                 </div>
             </div>
 
@@ -114,7 +139,13 @@
 
   <!-- Footer fijo -->
   <div class="checkout-footer">
-      <button id="btn-pagar" disabled>Ir a pagar</button>
+        <div class="checkout-footer__alert">
+            <i class="fa-solid fa-circle-exclamation"></i>
+            <p>Completa tus datos para continuar</p>
+        </div>
+        <div class="checkout-footer__btn">
+            <button id="btn-pagar">Ir a pagar</button>
+        </div>
   </div>
 
 

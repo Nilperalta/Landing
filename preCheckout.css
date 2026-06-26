@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    /*outline: 1px solid red;*/
 }
 
 :root {
@@ -32,7 +33,6 @@ body {
     width: 100%;
     margin: 0 auto;
     /*border: 1px solid red;*/
-    /*outline: 1px solid red;*/
     display: flex;
     flex-direction: column;
     gap: 24px;
@@ -113,27 +113,47 @@ body {
 }
 
 .checkout-resumen__detalle{
-    /*border: 1px solid pink;*/
+    /*border: 2px solid pink;*/
     display: none;
-    gap: 8px;
-    align-items: stretch;
+    gap: 16px;
+    margin-top: -8px; /*para que tenga un top de 16px a 24 le quito 8*/
+    /*align-items: stretch;*/
 }
 
 .checkout-resumen__detalle--visible{
     display: flex;
+    flex-direction: column;
 }
 
-.checkout-resumen__detalle img{
+/*.checkout-resumen__detalle img{
     height: 100%;
     width: 112px;
     min-height: 112px;
     border-radius: 16px;
     border: 1px solid #E3E3E3;
     object-fit: cover;;
+}*/
+
+/*generado dinamicamente*/
+.checkout-resumen__item {
+    /*border: 1px solid brown;*/
+    display: flex;
+    gap: 8px;
+}
+
+.checkout-resumen__item img {
+    width: 112px;
+    height: auto; /* cambia esto */
+    min-height: 112px;
+    align-self: stretch; /* esto hace que la imagen se estire al alto del contenedor */
+    border-radius: 16px;
+    border: 1px solid #E3E3E3;
+    object-fit: cover;
+    flex-shrink: 0;
 }
 
 .checkout-resumen__info{
-    /*border: 1px solid brown;*/
+    /*border: 1px solid green;*/
     display: flex;
     flex-direction: column;
     gap: 4px;
@@ -218,6 +238,7 @@ body {
 }
 
 .checkout-field label{
+    /*border: 1px solid rgb(255, 170, 0);*/
     color: #7F7F7F;
     font-size: 14px;
 }
@@ -227,11 +248,81 @@ body {
     border: 1px solid #C9C9C9;
     border-radius: 4px;
     padding: 8px;
+    /*max-height: 48px;*/
 }
 
 .checkout-field input::placeholder{
     color: #C9C9C9; 
     font-size: 14px;
+}
+
+/*ERROR INPUT*/
+.input--error {
+    border-color: #E53935;
+    color: #E53935;
+}
+
+.field-error {
+    /*border: 1px solid green;*/
+    margin-top: -4px; /*queda 4 de espacio, porque era 8px antes*/
+    color: #EF5350;
+    font-size: 12px;
+    font-weight: var(--font-weight-md);
+    text-align: end;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.input-wrapper input {
+    width: 100%;
+}
+
+.input-icon-error {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #E57373;
+    visibility: hidden;
+}
+
+.input-icon-error.input-icon-error--visible {
+     visibility: visible;
+}
+
+input.input--error{
+    border:1px solid #E53935;
+}
+
+.input-celular-wrapper {
+    display: flex;
+    align-items: center;
+    border: 1px solid #C9C9C9;
+    border-radius: 4px;
+    padding: 8px;
+    gap: 4px;
+}
+
+.input-celular-wrapper.input--error{
+    border:1px solid #E53935;
+}
+
+.celular-prefix {
+    color: #474747;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.input-celular-wrapper input {
+    border: none;
+    padding: 0;
+    flex: 1;
+}
+
+.input-celular-wrapper.input--error {
+    border-color: #E53935;
 }
 
 
@@ -274,10 +365,48 @@ body {
     width: 100%;
     background: #FFFFFF;
     border-top: 0.5px solid #E7E7E7;
+    transition: opacity 0.3s ease;
+}
+
+.checkout-footer--hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.checkout-footer__alert{
+    /*border: 2px solid black;*/
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 8px 24px;
+    gap: 4px;
+    background-color: #FFEED5;
+    /*margin: 0 -16px;*/
+}
+
+.checkout-footer__alert--visible{
+    display: flex;
+}
+
+.checkout-footer__alert i{
+    /*border: 2px solid pink;*/
+    color: #F97816;
+    font-size: 16px;
+}
+
+.checkout-footer__alert p{
+    /*border: 2px solid green;*/
+    color: #7C2F12;
+    font-size: 14px;
+}
+
+.checkout-footer__btn {
     padding: 12px 24px 32px 24px;
 }
 
-.checkout-footer button {
+.checkout-footer__btn button {
+    /*border: 2px solid green;*/
     border: none;
     border-radius: 24px;
     width: 100%;
@@ -285,14 +414,15 @@ body {
     color: #F7F7F7;
     font-size: 20px;
     font-weight: bold;
-    background-color: #7F7F7F;
+    background-color: #616161;
 }
 
 .checkout-entrega__content{
-    /*border: 2px solid green;*/
+    /*border: 5px solid black;*/
     display: none;
     flex-direction: column;
     gap: 16px;
+    margin-bottom: 120px;
    
 }
 
