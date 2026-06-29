@@ -21,6 +21,12 @@
         <a class="checkout-header__volver">Volver</a>
     </header>
 
+    <!-- Banner envío gratis -->
+    <div class="banner-envio">
+        <i class="fa-solid fa-truck"></i>
+        <span>Envío gratis a Lima Metropolitana</span>
+    </div>
+
     <!-- Resumen -->
     <section class="checkout-resumen">
         <div class="checkout-resumen__header">
@@ -29,7 +35,7 @@
         </div>
 
         <div class="checkout-resumen__detalle">
-            <img src="images/image_p.png" alt="Camisa bootcut">
+            <!--<img src="images/image_p.png" alt="Camisa bootcut">
             <div class="checkout-resumen__info">
                 <p class="resumen-nombre">Camisa <br> Bootcut</p>
 
@@ -38,7 +44,7 @@
                     <span>Talla: <span class="resumen-talla">M</span></span>
                     <span>Cantidad: <span class="resumen-cantidad">01</span></span>
                 </div>
-            </div>
+            </div>-->
         </div>
 
         <div class="checkout-resumen__total">
@@ -108,6 +114,33 @@
             </div>
 
             <div class="checkout-entrega__fields">
+                
+                <!-- Opciones de envío -->
+                <div class="entrega-opciones-envio">
+
+                    <!-- Estado 1: envío gratis por destino -->
+                    <div class="envio-item envio-item--gratis">
+                        <span>• Envío a Lima Metropolitana</span>
+                        <span class="envio-badge">GRATIS</span>
+                    </div>
+
+                    <!-- Estado 2: progress bar -->
+                    <div class="envio-item envio-item--progress">
+                        <p>¡Estás a solo <strong>S/29.00</strong> de tener <strong>Envío Gratis!</strong></p>
+                        <div class="envio-progress-bar">
+                            <div class="envio-progress-bar__fill"></div>
+                        </div>
+                    </div>
+
+                    <!-- Estado 3: tarifas por defecto -->
+                    <div class="envio-item envio-item--tarifas">
+                        <span>• Envío a Lima Metropolitana <span class="envio-precio">S/15.00</span></span>
+                        <span>• Envío a todo Peru <span class="envio-precio">S/25.00</span></span>
+                    </div>
+
+                </div>
+
+
                 <div class="checkout-field">
                     <label>Departamento</label>
                     <select id="input-departamento">

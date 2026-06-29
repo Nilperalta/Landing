@@ -13,7 +13,7 @@ if (carrito && carrito.length > 0) {
     const contenedor = document.querySelector('.checkout-resumen__detalle')
     contenedor.innerHTML = ''
 
-    carrito.forEach(item => {
+    carrito.forEach((item, index) => {
         const fila = document.createElement('div')
         fila.classList.add('checkout-resumen__item')
         fila.innerHTML = `
@@ -26,9 +26,18 @@ if (carrito && carrito.length > 0) {
                     <span>Cantidad: <span>${item.cantidad}</span></span>
                 </div>
             </div>
-            <i class="fa-solid fa-trash resumen-trash ${carrito.length <= 1 ? 'resumen-trash--hidden' : ''}"></i>
+            <i class="fa-solid fa-trash-can resumen-trash ${carrito.length > 1 ? '' : 'resumen-trash--hidden'}"></i>
         `
         contenedor.appendChild(fila)
+
+        const trash = fila.querySelector('.resumen-trash')
+        trash.addEventListener('click', () => {
+            carrito.splice(index, 1)
+            localStorage.setItem('carritoData', JSON.stringify(carrito))
+            const totalPrecio = carrito.reduce((acc, item) => acc + item.cantidad * 120, 0)
+            localStorage.setItem('totalCarrito', `S/${totalPrecio}.00`)
+            location.reload()
+        })
     })
 }
 
@@ -196,7 +205,7 @@ btnCerrarModal.addEventListener('click', ()=>{
 btnVolver.addEventListener('click', () => {
     if (carrito.length === 1) {
         modalVolver.classList.add('modal-volver--visible')
-         localStorage.setItem('vieneDeVolver', 'true') 
+        localStorage.setItem('vieneDeVolver', 'true') 
     } else {
         window.location.href = 'index.html'
     }

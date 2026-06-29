@@ -78,6 +78,35 @@ body {
     font-weight: var(--font-weight-md);
 }
 
+/*BANNER DE ENVÍO GRATIS*/
+.banner-envio{
+    /*border: 3px solid green;*/
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background: #DEF5FD;
+    padding: 8px 24px 8px 24px;
+    gap: 4px;
+    margin: -24px -16px 0 -16px;
+}
+
+.banner-envio--visible{
+    display: flex;
+}
+
+.banner-envio i{
+    /*border: 3px solid red;*/
+    color: #0F4252;
+    font-size: 16px;
+}
+
+.banner-envio span{
+    /*border: 3px solid blue;*/
+    color: #126781;
+    font-size: 13px;
+    font-weight: var(--font-weight-semiBold);
+}
+
 
 /*RESUMEN*/
 .checkout-resumen{
@@ -126,14 +155,15 @@ body {
 }
 
 .resumen-trash {
-    color: #7F7F7F;
+    /*border: 2px solid pink;*/
+    color: #616161;
     font-size: 16px;
     align-self: center;
     cursor: pointer;
 }
 
 .resumen-trash--hidden {
-    display: none;
+    display: none !important;
 }
 
 /*.checkout-resumen__detalle img{
@@ -150,11 +180,12 @@ body {
     /*border: 1px solid brown;*/
     display: flex;
     gap: 8px;
+    padding-right: 8px;
 }
 
 .checkout-resumen__item img {
     width: 112px;
-    height: auto; /* cambia esto */
+    height: auto;
     min-height: 112px;
     align-self: stretch; /* esto hace que la imagen se estire al alto del contenedor */
     border-radius: 16px;
@@ -167,6 +198,7 @@ body {
     /*border: 1px solid green;*/
     display: flex;
     flex-direction: column;
+    width: 100%;
     gap: 4px;
 }
 
@@ -456,6 +488,7 @@ input.input--error{
 }
 
 .checkout-entrega__opciones label{
+    /*border: 1px solid red;*/
     display: flex;
     align-items: center;
     gap: 4px;
@@ -475,6 +508,67 @@ input.input--error{
     display: flex;
     flex-direction: column;
     gap: 24px;
+}
+
+.entrega-opciones-envio{
+    /*border: 1px solid yellow;*/
+    display: none;
+}
+
+.envio-item--gratis{
+    /*border: 1px solid brown;*/
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px 12px 8px;
+    background-color: #F2F2F2;
+    border-radius: 8px;
+    height: 68px;
+    margin-top: -8px;
+    margin-bottom: -8px;
+}
+
+.envio-item--gratis span{
+    color: #474747;
+    font-size: 14px;
+}
+
+.envio-badge{
+    color: #2E2E2E;
+    font-size: 14px;
+    font-weight: var(--font-weight-md);
+}
+
+.envio-item--progress{
+    border: 1px solid blue;
+    display: none;
+}
+
+.envio-item--tarifas{
+    /*border: 1px solid purple;*/
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    padding: 12px 16px 12px 8px;
+    background-color: #F2F2F2;
+    border-radius: 8pxpx;
+    gap: 8px;
+    margin-top: -8px;
+    margin-bottom: -8px;
+}
+
+.envio-item--tarifas span{
+    /*border: 1px solid purple;*/
+    display: flex;
+    justify-content: space-between;
+    color: #474747;
+    font-size: 14px;
+}
+
+.envio-precio{
+    color: #2E2E2E;
+    font-size: 14px;
+    font-weight: var(--font-weight-md);
 }
 
 
