@@ -303,6 +303,7 @@ let colorSeleccionado = true;   // celeste ya está por defecto
 let tallaSeleccionada = false;
 let tallaActual = "";  //
 let carrito = [];        // array para guardar productos
+let timeoutHighlight;
 
 btnCTA.addEventListener('click', ()=>{
 
@@ -316,6 +317,12 @@ btnCTA.addEventListener('click', ()=>{
         containerTalla.classList.add('product-options__header--error')
         containerCounter.classList.remove('product-options__counter--error')
         textContainerError.textContent = "Elige una talla disponible"
+
+        clearTimeout(timeoutHighlight);
+
+        timeoutHighlight = setTimeout(() => {
+            containerTalla.classList.remove('product-options__header--error');
+        }, 2000);
 
     } else if (counter === 0) {
         containerCounter.classList.add('product-options__counter--error')
