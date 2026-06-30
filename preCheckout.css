@@ -81,7 +81,7 @@ body {
 /*BANNER DE ENVÍO GRATIS*/
 .banner-envio{
     /*border: 3px solid green;*/
-    display: none;
+    display: flex;
     justify-content: center;
     align-items: center;
     background: #DEF5FD;
@@ -512,12 +512,12 @@ input.input--error{
 
 .entrega-opciones-envio{
     /*border: 1px solid yellow;*/
-    display: none;
+    display: flex;
 }
 
 .envio-item--gratis{
     /*border: 1px solid brown;*/
-    display: none;
+    display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 12px 16px 12px 8px;
@@ -526,7 +526,9 @@ input.input--error{
     height: 68px;
     margin-top: -8px;
     margin-bottom: -8px;
+    width: 100%;
 }
+
 
 .envio-item--gratis span{
     color: #474747;
@@ -546,15 +548,16 @@ input.input--error{
 
 .envio-item--tarifas{
     /*border: 1px solid purple;*/
-    display: none;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     padding: 12px 16px 12px 8px;
     background-color: #F2F2F2;
-    border-radius: 8pxpx;
+    border-radius: 8px;
     gap: 8px;
     margin-top: -8px;
     margin-bottom: -8px;
+    width: 100%;
 }
 
 .envio-item--tarifas span{
@@ -564,6 +567,11 @@ input.input--error{
     color: #474747;
     font-size: 14px;
 }
+
+.envio-item--hidden {
+    display: none;
+}
+
 
 .envio-precio{
     color: #2E2E2E;

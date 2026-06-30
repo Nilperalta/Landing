@@ -24,7 +24,7 @@
     <!-- Banner envío gratis -->
     <div class="banner-envio">
         <i class="fa-solid fa-truck"></i>
-        <span>Envío gratis a Lima Metropolitana</span>
+        <span id="default">Envío gratis por compras superiores a S/149</span>
     </div>
 
     <!-- Resumen -->
@@ -109,7 +109,7 @@
                     <input type="radio" name="entrega" value="delivery" checked> Delivery
                 </label>
                 <label>
-                    <input type="radio" name="entrega" value="recojo"> Recojo
+                    <input type="radio" name="entrega" value="recojo"> Retiro en tienda
                 </label>
             </div>
 
@@ -119,7 +119,7 @@
                 <div class="entrega-opciones-envio">
 
                     <!-- Estado 1: envío gratis por destino -->
-                    <div class="envio-item envio-item--gratis">
+                    <div class="envio-item envio-item--gratis envio-item--hidden">
                         <span>• Envío a Lima Metropolitana</span>
                         <span class="envio-badge">GRATIS</span>
                     </div>

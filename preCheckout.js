@@ -178,8 +178,27 @@ inputMail.addEventListener('input', () => {
 })
 
 
+const bannerEnvio = document.querySelector('.banner-envio')
+const bannerTexto = document.querySelector('.banner-envio span')
+const envioTarifas = document.querySelector('.envio-item--tarifas')
+const envioGratis = document.querySelector('.envio-item--gratis')
+const envioGratisText = document.querySelector('.envio-item--gratis span')
+
+
 inputDepartamento.addEventListener('change', () => {
     validarFormulario();
+
+    const valor = inputDepartamento.value
+    
+    if (valor === 'arequipa') {
+        bannerTexto.textContent="Envío gratis a Arequipa"
+        envioTarifas.classList.add("envio-item--hidden");
+        envioGratis.classList.remove("envio-item--hidden");
+        envioGratisText.textContent='• Envío a Arequipa'
+    } else{
+        envioTarifas.classList.remove("envio-item--hidden");
+        envioGratis.classList.add("envio-item--hidden");    
+    }
 });
 
 inputDistrito.addEventListener('input', () => {
