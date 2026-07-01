@@ -83,6 +83,7 @@ let indice = 0
 principalImage.addEventListener('click', ()=>{
     indice = 0;
     lightbox.classList.toggle('lightbox--visible');
+    document.body.style.overflow = 'hidden' 
     boxImage.src = imagenes[colorActual][0];
     boxCounter.textContent = (indice + 1) + "/" + imagenes[colorActual].length;
     let width = (1 / imagenes[colorActual].length) * 100
@@ -112,6 +113,7 @@ btnPrev.addEventListener('click', ()=>{
 /*btn cerrar */
 btnClose.addEventListener('click', ()=>{
     lightbox.classList.toggle('lightbox--visible');
+    document.body.style.overflow = '' 
 })
 
 
