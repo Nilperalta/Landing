@@ -244,3 +244,59 @@ btnOpcionVaciar.addEventListener('click', ()=>{
     localStorage.removeItem('totalCarrito')
     window.location.href = 'index.html'
 })
+
+
+/*OPCIONES DE RECOJO*/
+
+/* ============ ENTREGA: Delivery vs Retiro en tienda ============ */
+
+// Radios
+const radioDelivery = document.querySelector('input[name="entrega"][value="delivery"]')
+const radioRecojo = document.querySelector('input[name="entrega"][value="recojo"]')
+
+// Contenedores de cada flujo
+const entregaDelivery = document.getElementById('entrega-delivery')
+const entregaRecojo = document.getElementById('entrega-recojo')
+
+// Campos propios de Retiro en tienda
+const inputDepartamentoRecojo = document.getElementById('input-departamento-recojo')
+const inputFechaRetiro = document.getElementById('input-fecha-retiro')
+
+// Tarjetas de tienda
+const tiendaCards = document.querySelectorAll('.tienda-card')
+
+// Estado
+let tiendaSeleccionada = null   // guardará el data-tienda de la tarjeta elegida
+
+
+/* Toggle Delivery / Retiro en tienda */
+radioDelivery.addEventListener('change', () => {
+    // mostrar entregaDelivery, ocultar entregaRecojo
+    entregaDelivery.classList.add('entrega-delivery--visible')
+    entregaRecojo.classList.remove('entrega-recojo--visible')
+})
+
+radioRecojo.addEventListener('change', () => {
+    // mostrar entregaRecojo, ocultar entregaDelivery
+    entregaRecojo.classList.add('entrega-recojo--visible')
+    entregaDelivery.classList.remove('entrega-delivery--visible')
+})
+
+/* Selección de tienda (mismo patrón que colores/tallas) */
+tiendaCards.forEach(card => {
+
+    card.addEventListener('click', () => {
+        // Paso 1: reset — quitar selección y texto de TODAS las tarjetas
+        tiendaCards.forEach(c => {
+            c.classList.remove('tienda-card--selected')
+            c.querySelector('.tienda-card__btn').textContent = 'Seleccionar'
+        })
+        
+        // Paso 2: seleccionar solo la card clickeada
+        card.classList.add('tienda-card--selected')
+        card.querySelector('.tienda-card__btn').textContent = 'Seleccionado'
+
+        // Paso 3: guardar el estado
+        tiendaSeleccionada = card.dataset.tienda
+    })
+})
