@@ -431,10 +431,13 @@ const renderCarrito = () => {
 }
 
 const tooltipInfo = document.querySelector('.tooltip-info')
+const overlay = document.getElementById('overlay')
 
 containerResumen.addEventListener('click', () => {
     resumenDetalle.classList.toggle('resumen-detalle--visible');
     tooltipInfo.classList.toggle('tooltip-info--visible')
+    overlay.classList.toggle('overlay--visible')
+    containerResumen.classList.toggle('container-resumen--active')
 });
 
 
