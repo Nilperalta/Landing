@@ -896,7 +896,8 @@ body {
 
 .lightbox__prev i{
     color: #7F7F7F;
-    font-size: 21px;
+    font-size: 24px;
+    padding: 20px;
 }
 
 .lightbox__next{
@@ -912,7 +913,8 @@ body {
 
 .lightbox__next i{
     color: #7F7F7F;
-    font-size: 21px;
+    font-size: 24px;
+    padding: 20px;
 }
 
 .lightbox__close{
