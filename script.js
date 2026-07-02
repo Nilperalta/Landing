@@ -438,8 +438,16 @@ containerResumen.addEventListener('click', () => {
     tooltipInfo.classList.toggle('tooltip-info--visible')
     overlay.classList.toggle('overlay--visible')
     containerResumen.classList.toggle('container-resumen--active')
+    document.body.classList.toggle('body--no-scroll') 
 });
 
+overlay.addEventListener('click', () => {
+    resumenDetalle.classList.remove('resumen-detalle--visible');
+    tooltipInfo.classList.remove('tooltip-info--visible')
+    overlay.classList.remove('overlay--visible')
+    containerResumen.classList.remove('container-resumen--active')
+    document.body.classList.remove('body--no-scroll')
+});
 
 if (localStorage.getItem('vieneDeVolver') === 'true') {
     localStorage.removeItem('vieneDeVolver')

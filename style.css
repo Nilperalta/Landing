@@ -32,8 +32,10 @@ body {
   font-size: var(--font-size-base);
   background-color: var(--color-bg);
   color: var(--color-text-primary);
-  
+}
 
+.body--no-scroll{
+    overflow: hidden;
 }
 
 .container {
@@ -613,6 +615,7 @@ body {
     justify-content: center;    width: 259px;
     max-width: 100%;
     display: none;
+    z-index: 700; 
 }
 
 .tooltip-info--arriba {

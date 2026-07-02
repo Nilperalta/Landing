@@ -627,10 +627,9 @@ input.input--error{
 }
 
 
-
 /* Tarjeta de tienda */
 .tienda-card{
-    /*border: 1px solid red;*/
+    border: 1px solid transparent; 
     display: flex;
     flex-direction: column;
     /*justify-content: space-between;
@@ -665,7 +664,7 @@ input.input--error{
 .tienda-card__horario{
     /*border: 1px solid purple;*/
     font-size: 12px;
-    color: #7F7F7F;
+    color: #616161;
 }
 
 .tienda-card__btn{
@@ -683,11 +682,12 @@ input.input--error{
 /* Estado seleccionado */
 .tienda-card--selected{
     border-color: #4CAF50;
-    background-color: #F3FAF3;
+    background-color: #F3FCF3;
 }
 
 .tienda-card--selected .tienda-card__btn{
-    color: #44734E;
+    color: #1C5F1E;
+    font-weight: var(--font-weight-md);
 }
 
 
