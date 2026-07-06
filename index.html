@@ -10,119 +10,173 @@
 </head>
 <body>
 
-  <div class="container">
+<div class="container">
 
-    <div class="product-image">
-    <img src="images/image_p.png" id="img-principal" alt="Camisa bootcut">
-    
-        <section class="product-info">
-            <div class="product-info__header">
-                <h1 class="product-info__title">Camisa bootcut</h1>
-                <i class="fa-regular fa-bookmark"></i>
-            </div>
-            <div class="product-info__price">
-                <p>precio</p>
-                <div class="group-prices">
-                    <p class="product-info__price--original"><del>S/190.00</del></p>
-                    <p class="product-info__price--current">S/120.00</p>
+    <div class="product-row">
+
+        <div class="product-image">
+        <img src="images/image_p.png" id="img-principal" alt="Camisa bootcut">
+
+        </div>
+
+
+        <!--Sección opciones del producto-->
+        <div class="product-main">
+
+            <section class="product-info">
+                <div class="product-info__header">
+                    <h1 class="product-info__title">Camisa bootcut</h1>
+                    <i class="fa-regular fa-bookmark"></i>
+                </div>
+                <div class="product-info__price">
+                    <p>precio</p>
+                    <div class="group-prices">
+                        <p class="product-info__price--original"><del>S/190.00</del></p>
+                        <p class="product-info__price--current">S/120.00</p>
+                    </div>
+                </div>
+            </section>
+
+            <!--Sección opciones del producto color y talla-->
+            <section class="product-options">
+                <!-- COLOR -->
+                <div class="product-options__category">
+                    <div class="product-options__header" id="toggle-color">
+
+                    <label>Color</label>
+                    <i class="fa-solid fa-plus"></i>
+                    </div>
+
+                    <div class="colors">
+                        <div class="color-item">
+                            <div class="color-item__circle color-item__circle--selected" data-color="celeste" style="background-color: #C6D7EA;"></div>
+                            <p>celeste</p>
+                        </div>  
+
+                        <div class="color-item">
+                            <div class="color-item__circle" data-color="rosado" style="background-color: #E2588A;"></div>
+                            <p>rosado</p>
+                        </div>
+
+                        <div class="color-item">
+                            <div class="color-item__circle" data-color="olivo" style="background-color: #778E6B;"></div>
+                            <p>olivo</p>
+                        </div>
+
+                        <div class="color-item">
+                            <div class="color-item__circle" data-color="negro" style="background-color: #111111;"></div>
+                            <p>negro</p>
+                        </div>
+
+                        <div class="color-item">
+                            <div class="color-item__circle"data-color="morado"  style="background-color: #6460DB;"></div>
+                            <p>morado</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TALLA -->
+                <div class="product-options__category">
+                    <div class="product-options__header" id="toggle-talla">
+                    <label>Talla</label>
+                    <i class="fa-solid fa-plus"></i>
+                    </div>
+
+                    <div class="product-options__content">
+                    <div class="tallas">
+                        <span class="talla--disponible" data-talla="XS">XS</span>
+                        <span class="talla--disponible"data-talla="S">S</span>
+                        <span class="talla--agotada"data-talla="M">M</span>
+                        <span class="talla--agotada" data-talla="L">L</span>
+                        <span class="talla--agotada" data-talla="XL">XL</span>
+                    </div>
+                    <p class="tallas__guia">Guía de tallas</p>
+                    </div>
+                </div>
+
+                <!-- CANTIDAD -->
+                <div class="product-options__amount">
+                    <div class="cantidad-info">
+                        <p>Cantidad</p>
+                        <p class="cantidad-max">Max. 03 unidades.</p>
+                    </div>
+                    <div class="product-options__counter">
+                        <i class="fa-solid fa-circle-minus counter__btn--minus"></i>
+                        <span class="counter__display"></span>
+                        <i class="fa-solid fa-circle-plus counter__btn--plus"></i>
+                    </div>
+                </div>
+
+                </section>
+            
+            <!--Sección footer product, boton, warnings-->
+            <div class="product-footer">
+
+                <div class="container-warning">
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                    <p>Esta combinación no está disponible</p>
+                </div>
+
+                <div class="container-error">
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                    <p class="product-footer__error">Elige una talla disponible</p>
+                </div>
+
+                
+                <div class="resumen-detalle">
+                    <div class="resumen-detalle__handle"></div>
+                    
+                    <div class="resumen-row">
+                        <div class="resumen-item--color-talla">
+                            <span id="resumen-detalle-texto">• Celeste · XS</span>
+                        </div>
+                        <div class="resumen-item--i">
+                            <i id="resumen-detalle-borrar" class="fa-solid fa-trash" ></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container-resumen">
+                    <div class="resumen-info">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                        <span>•</span>
+                        <span class="resumen-cantidad">1 producto</span>
+                    </div>
+                    <span class="resumen-total">S/120.00</span>
+                </div>
+
+                <div class="product-footer__btn">
+                    <button id="btn-cta" class="btn--disabled">Seleccionar talla</button>
+                </div>
+
+                <div class="product-footer__actions">
+                    <button id="btn-add" class="btn--secondary">Añadir</button>
+                    <button id="btn-finalizar" class="btn--active">Finalizar compra</button>
                 </div>
             </div>
-        </section>
+            
+
+            <!--Sección descripción del producto-->
+            <section class="product-description">
+                <h2>Descripción</h2>
+                <span class="product-description__text">
+                    Vestido sin cierre y pretina prolongada con botón oculto y corchetes. Piernas bootcut con pliegue delante y detrás, bolsillos laterales en diagonal y bolsillos traseros ribeteados...
+                </span>
+
+                <!-- esto ya existe en el HTML pero JS lo oculta por defecto -->
+                <div class="product-description__extra">
+                    <h3>Medidas</h3>
+                    <span>Vestido sin cierre y pretina prolongada con botón oculto y corchetes.</span>
+                    
+                    <h3>Composición</h3>
+                    <span>Vestido sin cierre y pretina prolongada con botón oculto y corchetes.</span>
+                </div>
+
+                <span class="product-description__toggle">Ver más</span>
+            </section>
+        </div>
 
     </div>
-
-
-    <!--Sección opciones del producto-->
-    <section class="product-options">
-
-        <!-- COLOR -->
-        <div class="product-options__category">
-            <div class="product-options__header" id="toggle-color">
-
-            <label>Color</label>
-            <i class="fa-solid fa-plus"></i>
-            </div>
-
-            <div class="colors">
-                <div class="color-item">
-                    <div class="color-item__circle color-item__circle--selected" data-color="celeste" style="background-color: #C6D7EA;"></div>
-                    <p>celeste</p>
-                </div>  
-
-                <div class="color-item">
-                    <div class="color-item__circle" data-color="rosado" style="background-color: #E2588A;"></div>
-                    <p>rosado</p>
-                </div>
-
-                <div class="color-item">
-                    <div class="color-item__circle" data-color="olivo" style="background-color: #778E6B;"></div>
-                    <p>olivo</p>
-                </div>
-
-                <div class="color-item">
-                    <div class="color-item__circle" data-color="negro" style="background-color: #111111;"></div>
-                    <p>negro</p>
-                </div>
-
-                <div class="color-item">
-                    <div class="color-item__circle"data-color="morado"  style="background-color: #6460DB;"></div>
-                    <p>morado</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- TALLA -->
-        <div class="product-options__category">
-            <div class="product-options__header" id="toggle-talla">
-            <label>Talla</label>
-            <i class="fa-solid fa-plus"></i>
-            </div>
-
-            <div class="product-options__content">
-            <div class="tallas">
-                <span class="talla--disponible" data-talla="XS">XS</span>
-                <span class="talla--disponible"data-talla="S">S</span>
-                <span class="talla--agotada"data-talla="M">M</span>
-                <span class="talla--agotada" data-talla="L">L</span>
-                <span class="talla--agotada" data-talla="XL">XL</span>
-            </div>
-            <p class="tallas__guia">Guía de tallas</p>
-            </div>
-        </div>
-
-        <!-- CANTIDAD -->
-        <div class="product-options__amount">
-             <div class="cantidad-info">
-                <p>Cantidad</p>
-                <p class="cantidad-max">Max. 03 unidades.</p>
-            </div>
-            <div class="product-options__counter">
-                <i class="fa-solid fa-circle-minus counter__btn--minus"></i>
-                <span class="counter__display"></span>
-                <i class="fa-solid fa-circle-plus counter__btn--plus"></i>
-            </div>
-        </div>
-
-        </section>
-
-    <!--Sección descripción del producto-->
-    <section class="product-description">
-        <h2>Descripción</h2>
-        <span class="product-description__text">
-            Vestido sin cierre y pretina prolongada con botón oculto y corchetes. Piernas bootcut con pliegue delante y detrás, bolsillos laterales en diagonal y bolsillos traseros ribeteados...
-        </span>
-
-        <!-- esto ya existe en el HTML pero JS lo oculta por defecto -->
-        <div class="product-description__extra">
-            <h3>Medidas</h3>
-            <span>Vestido sin cierre y pretina prolongada con botón oculto y corchetes.</span>
-            
-            <h3>Composición</h3>
-            <span>Vestido sin cierre y pretina prolongada con botón oculto y corchetes.</span>
-        </div>
-
-        <span class="product-description__toggle">Ver más</span>
-    </section>
 
     <!--Sección vendedor del producto-->
     <section class="product-seller">
@@ -162,52 +216,9 @@
     </div>
 
     <div class="overlay" id="overlay"></div>
-    <div class="product-footer">
-
-        <div class="container-warning">
-            <i class="fa-solid fa-circle-exclamation"></i>
-            <p>Esta combinación no está disponible</p>
-        </div>
-
-        <div class="container-error">
-            <i class="fa-solid fa-circle-exclamation"></i>
-            <p class="product-footer__error">Elige una talla disponible</p>
-        </div>
-
-        
-        <div class="resumen-detalle">
-            <div class="resumen-detalle__handle"></div>
-            
-            <div class="resumen-row">
-                <div class="resumen-item--color-talla">
-                    <span id="resumen-detalle-texto">• Celeste · XS</span>
-                </div>
-                <div class="resumen-item--i">
-                    <i id="resumen-detalle-borrar" class="fa-solid fa-trash" ></i>
-                </div>
-            </div>
-        </div>
-
-        <div class="container-resumen">
-            <div class="resumen-info">
-                <i class="fa-solid fa-bag-shopping"></i>
-                <span>•</span>
-                <span class="resumen-cantidad">1 producto</span>
-            </div>
-            <span class="resumen-total">S/120.00</span>
-        </div>
-
-        <div class="product-footer__btn">
-            <button id="btn-cta" class="btn--disabled">Seleccionar talla</button>
-        </div>
-
-        <div class="product-footer__actions">
-            <button id="btn-add" class="btn--secondary">Añadir</button>
-            <button id="btn-finalizar" class="btn--active">Finalizar compra</button>
-        </div>
-    </div>
 
   </div>
+
 
   <!-- Lightbox -->
     <div class="lightbox" id="lightbox">

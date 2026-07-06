@@ -64,12 +64,15 @@ body {
     display: block;
 }
 
+.product-row {
+    position: relative;   /* 👈 nuevo: ahora ES el punto de referencia */
+}
 
 /*------------------Información productos-----------------------------*/
 .product-info{
-    /*border: 5px solid purple;*/
+    /*border: 1px solid yellow;*/
     position: absolute;
-    bottom: -51px;    /* la mitad de 102px hacia abajo */
+    top: 397px;              /* 448px (alto imagen) - 51px (cuánto se monta) */
     left: 0;
     right: 0;
     width: calc(100% - 32px);
@@ -705,7 +708,7 @@ body {
     display: none;
     justify-content: space-between;
     align-items: center;
-    background-color: #F1FBFE;
+    background-color: #DEF5FD;
     width: 100%;
     padding: 8px 16px 8px 16px;
     transition: background-color .25s ease;
@@ -978,12 +981,175 @@ body {
 }
 
 
+@media (min-width: 1024px) {
+    .container {
+        /*border: 1px solid red;*/
+        max-width: 1440px;    /*el ancho tope, según tu Figma */
+        margin: 0 auto; /*centra el bloque, reparte el sobrante en ambos lados */
+        display: flex;
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+        padding: 0 64px 68px 64px;
+    }
+
+    .product-seller {
+        /*border: 1px solid blue;*/
+        order: -1;  
+        margin-bottom: 0;
+       
+    }
+
+    .product-seller h2{
+        display: none;
+    }
+
+    .product-seller__content {
+        /*border: 1px solid green;*/
+        display: flex;
+        margin-top: 56px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid #E3E3E3;
+    }
+    .product-row {
+        /*border: 3px solid green;*/
+        display: flex;
+        gap: 135px;
+        align-items: flex-start;
+        /*justify-content: center;*/
+        width: 100%;
+        min-width: 0;
+    }
+
+    .product-seller__content img{
+        /*border: 3px solid black;*/
+        justify-content: center;
+        height: auto;
+        width: 52px;
+    }
+
+    .product-seller_contact{
+        /*border: 2px solid pink;*/
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    
+    .product-seller_header{
+        /*border: 1px solid red;*/
+        display: flex;
+        justify-content: center;
+    }
+
+    .product-seller__links{
+        /*border: 1px solid brown;*/
+        align-items: center;
+    }
+
+    .product-image {
+        /*border: 1px solid yellow;*/
+        flex: 1 1 644px;      /* 👈 ahora SÍ puede encogerse si falta espacio */
+        max-width: 644px;     /* pero nunca crece más de esto */
+        min-width: 0;  
+        margin: 0;           /* evita que el contenido interno (la img) fuerce overflow */
+        height: auto;
+        aspect-ratio: 644 / 805;   /* mantiene la proporción cuando se encoge */     /* ancho fijo, no crece ni se encoge */
+    }
+
+    .product-image img{
+        /*border: 1px solid red;*/
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .product-main {
+        /*border: 3px solid purple;*/
+        flex: 1 1 422px;
+        max-width: 422px;
+        min-width: 0;        /* ancho fijo también */
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        margin-top: 16px;
+    }
+
+    .product-options{
+        /*border: 1px solid red;*/
+        margin: 0;
+    }
+
+    .product-options__amount{
+        margin-bottom: 0;
+    }
+
+    .product-info {
+        /*display: none;*/
+        /*border: 2px solid yellow;*/
+        position: static;    /* 👈 en desktop, vuelve al flujo normal dentro de product-main */
+        width: 100%;
+        top: auto;
+        border-radius: 16px;
+    }
+
+    .product-footer {
+        /*border: 3px solid pink;*/
+        display: flex; 
+        position: static;       /* 👈 vuelve al flujo normal, nada de absolute */
+        width: 100%;
+        /*left: auto;*/  
+        transform: none; 
+        background: transparent;
+        border-radius: 0;
+    }
+
+    .product-footer__btn {
+        /*border: 3px solid red;*/
+        width: 100%;
+        order: 1; 
+        padding: 8px 0 16px 0;
+        border: none;
+        
+    }
+
+    .container-error {
+        /*border: 3px solid red;*/
+        order: 5;
+    }
+
+    .product-footer__actions {
+        /*border: 2px solid black;*/
+        order: 3;              /* aparece después del botón y del warning */
+        width: 100%;
+        padding: 8px 0px 16px 0px;
+        border: none;   
+    }
+
+    .container-resumen{
+        order: 4;              /* aparece después del botón y del warning */
+        width: 100%;
+    }
+
+    /* En desktop probablemente no quieras el bottom-sheet del carrito flotando,
+       solo el botón "Seleccionar talla" — oculta el resto: */
+    .container-warning{
+        order: 5;              /* aparece después del botón y del warning */
+        width: 100%;
+    }
+    
+    
+    .resumen-detalle{
+    
+    }
+
+}
 
 @media (min-width: 768px) {
     .container {
-        max-width: 390px;  
+        /*max-width: 390px;*/  
     }
     .product-footer {
-    width: 390px;    
+        /*width: 390px;*/    
 }
 }

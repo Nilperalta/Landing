@@ -122,12 +122,14 @@ btnClose.addEventListener('click', ()=>{
 const footer = document.querySelector('.product-footer');
 
 window.addEventListener('scroll', ()=>{
-    if (window.scrollY>10) {
-        footer.classList.add('product-footer--hidden')
-        tooltipInfo.classList.add('tooltip-info--arriba')
-    } else {
-        footer.classList.remove('product-footer--hidden')
-        tooltipInfo.classList.remove('tooltip-info--arriba')
+    if (window.innerWidth < 1024){
+        if (window.scrollY>10) {
+            footer.classList.add('product-footer--hidden')
+            tooltipInfo.classList.add('tooltip-info--arriba')
+        } else {
+            footer.classList.remove('product-footer--hidden')
+            tooltipInfo.classList.remove('tooltip-info--arriba')
+        }
     }
 })
 
