@@ -282,8 +282,22 @@ btnTalla.forEach(talla => {
         btnAdd.classList.remove('btn--secondary--disabled') 
     })
 });
-/*Errores*/
 
+/*Btn medidas y composicion SOLO DESKTOP*/
+document.querySelectorAll('.product-accordion').forEach(accordion => {
+    const header = accordion.querySelector('.product-accordion__header')
+    const content = accordion.querySelector('.product-accordion__content')
+    const icon = header.querySelector('i')
+
+    header.addEventListener('click', () => {
+        content.classList.toggle('product-accordion__content--visible')
+        icon.classList.toggle('fa-plus')
+        icon.classList.toggle('fa-minus')
+    })
+})
+
+
+/*Errores*/
 const btnCTA = document.getElementById('btn-cta')
 const containerError = document.querySelector('.container-error')
 const containerTalla = document.getElementById('toggle-talla')

@@ -429,6 +429,49 @@ body {
     color: #1A6DA1;
 }
 
+/*-----------------Sección Desktop de medidas------------*/
+
+/* Oculto por defecto en mobile */
+.product-accordion {
+    display: none;
+}
+
+.product-accordion__header {
+    /*border-top: 1px solid #BBB4B4;*/
+    /*border:1px solid red;*/
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 32px;
+    padding-right: 8px;
+    cursor: pointer;
+}
+
+.product-accordion__header label {
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #413C3C;
+    font-weight: var(--font-weight-md);
+}
+
+.product-accordion__header i {
+    /*border:1px solid pink;*/
+    color: #413C3C;
+}
+
+.product-accordion__content {
+    display: none;
+}
+
+.product-accordion__content--visible {
+    display: block;
+}
+
+.product-accordion__content span {
+    font-size: 14px;
+    color: var(--color-text-paragraph);
+}
+
 
 /*-----------------Sección vendedor del producto------------*/
 
@@ -1082,6 +1125,16 @@ body {
 
     .product-options__amount{
         margin-bottom: 0;
+    }
+
+    /* En desktop: oculta el bloque mobile, muestra los acordeones */
+    .product-description__extra,
+    .product-description__toggle {
+        display: none;
+    }
+
+    .product-accordion {
+        display: block;
     }
 
     .product-info {
