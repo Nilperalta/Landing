@@ -1118,15 +1118,58 @@ body {
         margin-top: 16px;
     }
 
+    .colors {
+        /*border: 2px solid blue;*/
+        display: flex;   /* siempre visible, sin depender de --visible */
+        padding-bottom: 0;
+    }
+
+    .tallas {
+        display: flex;   /* siempre visible */
+    }
+
+    .product-options__header i {
+        display: none;   /* ya no hace falta el + / - */
+    }
+
+    .product-options__header {
+        cursor: default;   /* ya no es clickeable visualmente */
+    }
+
+    .product-options__category {
+        /*border: 2px solid yellow;*/
+        position: relative;   /* 👈 nuevo: ancla para el hijo absolute */
+        padding-bottom: 24px;
+    }
+
+    .tallas__guia {
+        display: block;         /* fuerza visible, sin depender de --visible */
+        position: absolute;
+        top: 16px;               /* alinea con el padding del header */
+        right: 8px;
+        margin-bottom: 0;        /* anula el margin-bottom:32px de mobile */
+    }
+
     .product-options{
         /*border: 1px solid red;*/
         margin: 0;
     }
 
     .product-options__amount{
+        /*border: 2px solid red;*/
         margin-bottom: 0;
     }
 
+    .product-description{
+        /*border: 2px solid orange;*/
+        margin: 0;
+        gap: 16px;
+    }
+
+    .product-description h2{
+        /*border: 2px solid red;*/
+        margin-bottom: -8px;
+    }
     /* En desktop: oculta el bloque mobile, muestra los acordeones */
     .product-description__extra,
     .product-description__toggle {
