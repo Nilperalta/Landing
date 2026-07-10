@@ -15,8 +15,21 @@
     <div class="product-row">
 
         <div class="product-image">
-        <img src="images/image_p.png" id="img-principal" alt="Camisa bootcut">
+            <img src="images/image_p.png" id="img-principal" alt="Camisa bootcut">
 
+            <!-- 👇 nuevo: solo visible en desktop -->
+            <div class="product-image__counter">1/3</div>
+
+            <button class="product-image__prev">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <button class="product-image__next">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+
+            <div class="product-image__progress">
+                <div class="product-image__progress-bar"></div>
+            </div>
         </div>
 
 

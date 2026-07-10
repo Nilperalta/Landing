@@ -80,6 +80,11 @@ const progressBar = document.querySelector('.lightbox__progress-bar');
 let indice = 0
 
 principalImage.addEventListener('click', ()=>{
+
+    if (window.innerWidth >= 1024) {
+        return   // en desktop, no hace nada — no abre el lightbox
+    }
+
     indice = 0;
     lightbox.classList.toggle('lightbox--visible');
     document.body.style.overflow = 'hidden' 
@@ -107,6 +112,8 @@ btnPrev.addEventListener('click', ()=>{
     let left = (indice / imagenes[colorActual].length) * 100
     progressBar.style.left = `${left}%`
 })
+
+
 
 
 /*btn cerrar */
@@ -228,7 +235,9 @@ btnColor.forEach(color => {
         color.classList.add('color-item__circle--selected')
         colorActual = color.dataset.color // elemento/seleccionar/data-color= solo tomo el color
         principalImage.src = imagenes[colorActual][0]
-
+        indiceDesktop = 0
+        if (imgCounterDesktop) actualizarImagenDesktop()  
+            
         /*Para quitar la selección de la talla*/
         btnTalla.forEach(t => t.classList.remove('talla--selected'))
         tallaSeleccionada = false
@@ -263,10 +272,38 @@ btnColor.forEach(color => {
     })
 })
 
+/**IMAGEN DESKTOP */
+
+const imgCounterDesktop = document.querySelector('.product-image__counter')
+const imgProgressDesktop = document.querySelector('.product-image__progress-bar')
+const btnPrevDesktop = document.querySelector('.product-image__prev')
+const btnNextDesktop = document.querySelector('.product-image__next')
+
+let indiceDesktop = 0
+
+function actualizarImagenDesktop() {
+    console.log("Se ejecutó");
+    principalImage.src = imagenes[colorActual][indiceDesktop]
+    imgCounterDesktop.textContent = (indiceDesktop + 1) + "/" + imagenes[colorActual].length
+    let width = (1 / imagenes[colorActual].length) * 100
+    let left = (indiceDesktop / imagenes[colorActual].length) * 100
+    imgProgressDesktop.style.width = `${width}%`
+    imgProgressDesktop.style.left = `${left}%`
+}
+
+btnNextDesktop.addEventListener('click', () => {
+    indiceDesktop = (indiceDesktop + 1) % imagenes[colorActual].length
+    actualizarImagenDesktop()
+})
+
+btnPrevDesktop.addEventListener('click', () => {
+    indiceDesktop = (indiceDesktop - 1 + imagenes[colorActual].length) % imagenes[colorActual].length
+    actualizarImagenDesktop()
+})
+
+actualizarImagenDesktop()
 
 /*Seleccionar talla */
-
-
 const btnTalla = document.querySelectorAll('.tallas .talla--disponible')
 
 btnTalla.forEach(talla => {
@@ -503,7 +540,7 @@ const renderCarrito = () => {
             const icono = fila.querySelector('i')
             icono.addEventListener('click', () => {
                 icono.style.color= '#E57373';
-                setTimeout(() => {x
+                setTimeout(() => {
                     carrito.splice(index, 1)
                     const totalUnidades = carrito.reduce((acc, item) => acc + item.cantidad, 0)
                     const totalPrecio = carrito.reduce((acc, item) => acc + item.cantidad * precio, 0)
