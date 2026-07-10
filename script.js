@@ -1,4 +1,3 @@
-
 const btnHeaderColor = document.getElementById('toggle-color');
 const colors = document.querySelector('.colors')
 const btnHeaderTalla = document.getElementById('toggle-talla');
@@ -129,6 +128,7 @@ window.addEventListener('scroll', ()=>{
         } else {
             footer.classList.remove('product-footer--hidden')
             tooltipInfo.classList.remove('tooltip-info--arriba')
+            tooltipInfo.classList.remove('tooltip-info--visible')
         }
     }
 })
@@ -362,99 +362,216 @@ btnCTA.addEventListener('click', ()=>{
 
 const resumenDetalle = document.querySelector('.resumen-detalle');
 
-btnAdd.addEventListener('click', ()=>{
-    
+function manejarAgregar() {
     if (stockPorColor[colorActual] === 0) {
         containerError.classList.remove('container-error--visible')
         return
     }
-
     if (tallaSeleccionada === false) {
         containerError.classList.add('container-error--visible')
         textContainerError.textContent = 'Falta seleccionar una talla'
         return
     }
-
     const unidadesEnCarrito = carrito
         .filter(item => item.color === colorActual)
         .reduce((acc, item) => acc + item.cantidad, 0)
-
     if (unidadesEnCarrito + counter > stockPorColor[colorActual]) {
         return
     }
-
     containerResumen.classList.add('container-resumen--visible')
     carrito.push({ color: colorActual, talla: tallaActual, cantidad: counter })
-
     const totalUnidades = carrito.reduce((acc, item) => acc + item.cantidad, 0)
     const totalPrecio = carrito.reduce((acc, item) => acc + item.cantidad * precio, 0)
-
     resumenCantidad.textContent = totalUnidades === 1 ? `${totalUnidades} producto` : `${totalUnidades} productos`
     resumenTotal.textContent = `S/${totalPrecio}.00`
-
     renderCarrito()
-})
+}
+
+btnAdd.addEventListener('click', manejarAgregar)
 
 
 const renderCarrito = () => {
     const handle = resumenDetalle.querySelector('.resumen-detalle__handle')
+    const headerDesktop = resumenDetalle.querySelector('.resumen-detalle__header-desktop')
+    
     resumenDetalle.innerHTML = ''
     resumenDetalle.appendChild(handle)
+    resumenDetalle.appendChild(headerDesktop)   //si no lo guardas, se borra en cada render
 
     if (carrito.length === 0) {
         const vacio = document.createElement('div')
         vacio.classList.add('resumen-vacio-container')
         vacio.innerHTML = `<p class="resumen-vacio">No hay productos seleccionados</p>`
         resumenDetalle.appendChild(vacio)
-        setTimeout(() => {
-           resumenDetalle.classList.remove('resumen-detalle--visible')
-           containerResumen.classList.remove('container-resumen--visible')
-        }, 2000);
+
+        // el auto-cierre de 2seg solo aplica en mobile
+        if (window.innerWidth < 1024) {
+            setTimeout(() => {
+               resumenDetalle.classList.remove('resumen-detalle--visible')
+               containerResumen.classList.remove('container-resumen--visible')
+
+               overlay.classList.remove('overlay--visible')
+                tooltipInfo.classList.remove('tooltip-info--visible')
+                containerResumen.classList.remove('container-resumen--active')
+                document.body.classList.remove('body--no-scroll')
+            }, 2000);
+        }
+
+        //clona el conteneor resumen, aunque esté vacío
+        if (window.innerWidth >= 1024) {
+            const resumenClon = containerResumen.cloneNode(true)
+            const actionsClon = containeractions.cloneNode(true)
+            const btnAddClon = actionsClon.querySelector('#btn-add')
+            const btnFinalizarClon = actionsClon.querySelector('#btn-finalizar')
+            btnAddClon.addEventListener('click', manejarAgregar)
+            btnFinalizarClon.addEventListener('click', manejarFinalizar)
+            resumenDetalle.appendChild(resumenClon)
+            resumenDetalle.appendChild(actionsClon)
+        }
+
         return
     }
 
-    carrito.forEach((item, index) => {
-        const fila = document.createElement('div')
-        fila.classList.add('resumen-row')
-        fila.innerHTML = `
-            <div class="resumen-item--color-talla">
-                <span>• ${item.color} · ${item.talla} · x${item.cantidad}</span>
-            </div>
-            <div class="resumen-item--i">
-                <i class="fa-solid fa-trash" data-index="${index}"></i>
-            </div>
-        `
-        resumenDetalle.appendChild(fila)
-        
-        /*guardando el icono de eliminar*/
-        const icono = fila.querySelector('i')
-        icono.addEventListener('click', () => {
-            icono.style.color= '#E57373';
-            
-            setTimeout(() => {
-                stockPorColor[item.color] += item.cantidad
-                carrito.splice(index, 1)
-                renderCarrito()
-
-                const totalUnidades = carrito.reduce((acc, item) => acc + item.cantidad, 0)
-                const totalPrecio = carrito.reduce((acc, item) => acc + item.cantidad * precio, 0)
-
-                resumenCantidad.textContent = totalUnidades === 1 ? `${totalUnidades} producto` : `${totalUnidades} productos`
-                resumenTotal.textContent = `S/${totalPrecio}.00`
-            }, 300)
+    if (window.innerWidth >= 1024) {
+        // Agrupa el carrito por color
+        const gruposPorColor = {}
+        carrito.forEach((item, index) => {
+            if (!gruposPorColor[item.color]) {
+                gruposPorColor[item.color] = []
+            }
+            gruposPorColor[item.color].push({ ...item, index })
         })
-    })
+
+        // Renderiza un bloque por cada color
+        Object.keys(gruposPorColor).forEach(color => {
+            const items = gruposPorColor[color]
+
+            const grupo = document.createElement('div')
+            grupo.classList.add('resumen-grupo-color')
+            grupo.innerHTML = `
+                <img src="${imagenes[color][0]}" class="resumen-row__img" alt="${color}">
+                <div class="resumen-grupo-color__items"></div>
+            `
+            resumenDetalle.appendChild(grupo)
+
+            const contenedorItems = grupo.querySelector('.resumen-grupo-color__items')
+
+            items.forEach(item => {
+                const fila = document.createElement('div')
+                fila.classList.add('resumen-row')
+                fila.innerHTML = `
+                    <div class="resumen-item--color-talla">
+                        <span>• ${item.color} · ${item.talla} · x${item.cantidad}</span>
+                    </div>
+                    <div class="resumen-item--i">
+                        <i class="fa-solid fa-trash" data-index="${item.index}"></i>
+                    </div>
+                `
+                contenedorItems.appendChild(fila)
+
+                const icono = fila.querySelector('i')
+                icono.addEventListener('click', () => {
+                    icono.style.color = '#E57373'
+                    setTimeout(() => {
+                        carrito.splice(item.index, 1)
+                        const totalUnidades = carrito.reduce((acc, item) => acc + item.cantidad, 0)
+                        const totalPrecio = carrito.reduce((acc, item) => acc + item.cantidad * precio, 0)
+                        resumenCantidad.textContent = totalUnidades === 1 ? `${totalUnidades} producto` : `${totalUnidades} productos`
+                        resumenTotal.textContent = `S/${totalPrecio}.00`
+                        renderCarrito()
+                    }, 300)
+                })
+            })
+        })
+
+    } else {
+        // Lógica ORIGINAL de mobile, sin cambios
+        carrito.forEach((item, index) => {
+            const fila = document.createElement('div')
+            fila.classList.add('resumen-row')
+            fila.innerHTML = `
+                <img src="${imagenes[item.color][0]}" class="resumen-row__img" alt="${item.color}">
+                <div class="resumen-item--color-talla">
+                    <span>• ${item.color} · ${item.talla} · x${item.cantidad}</span>
+                </div>
+                <div class="resumen-item--i">
+                    <i class="fa-solid fa-trash" data-index="${index}"></i>
+                </div>
+            `
+            resumenDetalle.appendChild(fila)
+
+            const icono = fila.querySelector('i')
+            icono.addEventListener('click', () => {
+                icono.style.color= '#E57373';
+                setTimeout(() => {x
+                    carrito.splice(index, 1)
+                    const totalUnidades = carrito.reduce((acc, item) => acc + item.cantidad, 0)
+                    const totalPrecio = carrito.reduce((acc, item) => acc + item.cantidad * precio, 0)
+                    resumenCantidad.textContent = totalUnidades === 1 ? `${totalUnidades} producto` : `${totalUnidades} productos`
+                    resumenTotal.textContent = `S/${totalPrecio}.00`
+                    renderCarrito()
+                }, 300)
+            })
+        })
+    }
+
+    //Clonamos resumen y botones//
+    if (window.innerWidth >= 1024) {
+        const resumenClon = containerResumen.cloneNode(true)
+        const actionsClon = containeractions.cloneNode(true)
+        
+        // Busca los botones DENTRO del clon (que tienen los mismos ids)
+        const btnAddClon = actionsClon.querySelector('#btn-add')
+        const btnFinalizarClon = actionsClon.querySelector('#btn-finalizar')
+        
+        btnAddClon.addEventListener('click', manejarAgregar)
+        btnFinalizarClon.addEventListener('click', manejarFinalizar)
+        
+        resumenDetalle.appendChild(resumenClon)
+        resumenDetalle.appendChild(actionsClon)
+    }
 }
+
+
+
+let anchoAnterior = window.innerWidth
+
+    window.addEventListener('resize', () => {
+        const esDesktopAhora = window.innerWidth >= 1024
+        const eraDesktopAntes = anchoAnterior >= 1024
+
+        // Solo re-renderiza si CRUZÓ el umbral (evita recalcular en cada pixel de resize)
+        if (esDesktopAhora !== eraDesktopAntes) {
+            renderCarrito()
+        }
+
+
+        anchoAnterior = window.innerWidth
+    })
+
 
 const tooltipInfo = document.querySelector('.tooltip-info')
 const overlay = document.getElementById('overlay')
+const btnCerrarPanel = document.getElementById('btn-cerrar-panel')
+
+btnCerrarPanel.addEventListener('click', () => {
+    resumenDetalle.classList.remove('resumen-detalle--visible')
+    tooltipInfo.classList.remove('tooltip-info--visible')
+    overlay.classList.remove('overlay--visible')
+    containerResumen.classList.remove('container-resumen--active')
+    document.body.classList.remove('body--no-scroll')
+})
 
 containerResumen.addEventListener('click', () => {
     resumenDetalle.classList.toggle('resumen-detalle--visible');
     tooltipInfo.classList.toggle('tooltip-info--visible')
     overlay.classList.toggle('overlay--visible')
     containerResumen.classList.toggle('container-resumen--active')
-    document.body.classList.toggle('body--no-scroll') 
+    document.body.classList.toggle('body--no-scroll')
+    
+    if (window.innerWidth >= 1024) {
+        renderCarrito();
+    }
 });
 
 overlay.addEventListener('click', () => {
@@ -484,19 +601,19 @@ if (localStorage.getItem('vieneDeVolver') === 'true') {
     }
 }
 
-
 /* BTN Finalizar compra*/
 const btnFinalizar = document.getElementById('btn-finalizar')
 
-btnFinalizar.addEventListener('click', () => {
+function manejarFinalizar() {
     if (carrito.length === 0) {
         return
     }
-    
     const total = resumenTotal.textContent
     localStorage.setItem('totalCarrito', total)
     localStorage.setItem('carritoData', JSON.stringify(carrito))
     localStorage.setItem('imagenProducto', imagenes[colorActual][0])
     localStorage.setItem('imagenesData', JSON.stringify(imagenes))
     window.location.href = 'preCheckout.html'
-})
+}
+
+btnFinalizar.addEventListener('click', manejarFinalizar)
