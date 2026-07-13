@@ -1045,7 +1045,6 @@ body {
         max-width: 1440px;    /*el ancho tope, según tu Figma */
         margin: 0 auto; /*centra el bloque, reparte el sobrante en ambos lados */
         display: flex;
-        display: flex;
         flex-direction: column;
         gap: 32px;
         padding: 0 64px 68px 64px;

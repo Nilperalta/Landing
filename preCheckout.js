@@ -8,6 +8,12 @@ const imagenesData = JSON.parse(localStorage.getItem('imagenesData'))
 
 document.querySelector('.total-price').textContent = total
 
+//suma las unidades reales del carrito
+const cantidadDesktopValue = document.querySelector('.cantidad-desktop-value')
+if (carrito && carrito.length > 0 && cantidadDesktopValue) {
+    const totalUnidades = carrito.reduce((acc, item) => acc + item.cantidad, 0)
+    cantidadDesktopValue.textContent = totalUnidades <= 9 ? `0${totalUnidades} UNIDADES` : `${totalUnidades} UNIDADES`
+}
 
 if (carrito && carrito.length > 0) {
     const contenedor = document.querySelector('.checkout-resumen__detalle')
@@ -86,6 +92,7 @@ const inputDepartamento = document.getElementById('input-departamento')
 const inputDistrito = document.getElementById('input-distrito')
 const inputDireccion = document.getElementById('input-direccion')
 const alertFooter = document.querySelector('.checkout-footer__alert')
+const warningDesktop = document.querySelector('.checkout-warning-desktop')
 const btnPagar = document.getElementById('btn-pagar')
 const celularWrapper = document.querySelector('.input-celular-wrapper')
 
@@ -100,25 +107,80 @@ const iconoMail = document.querySelector('#input-mail + .input-icon-error')
 const iconoCelular = document.querySelector('#input-celular').closest('.input-wrapper').querySelector('.input-icon-error')
 
 
-btnPagar.addEventListener('click', ()=>{
-    if (inputNombre.value === "" || inputCelular.value === "" || inputMail.value === "" || inputDepartamento.value === "" || inputDistrito.value === "" || inputDireccion.value === "") {
-        alertFooter.classList.add('checkout-footer__alert--visible')
-    
-    }else if (inputNombre.value && inputCelular.value && inputMail.value && inputDepartamento.value && inputDistrito.value && inputDireccion.value){
-        btnPagar.textContent = "Abriendo pago..."
-    } 
-    
-    else {
-        alertFooter.classList.remove('checkout-footer__alert--visible')
+function manejarPago() {
+
+    const formularioCompleto =
+        inputNombre.value &&
+        inputCelular.value &&
+        inputMail.value &&
+        inputDepartamento.value &&
+        inputDistrito.value &&
+        inputDireccion.value;
+
+    if (!formularioCompleto) {
+
+        // Warning mobile
+        alertFooter.classList.add('checkout-footer__alert--visible');
+
+        // Warning desktop
+        if (warningDesktop) {
+            warningDesktop.classList.add('checkout-warning-desktop--visible');
+        }
+
+    } else {
+
+        // Oculta warnings
+        alertFooter.classList.remove('checkout-footer__alert--visible');
+
+        if (warningDesktop) {
+            warningDesktop.classList.remove('checkout-warning-desktop--visible');
+        }
+
+        // Estado de pago
+        btnPagar.textContent = "Abriendo pago...";
+
+        if (btnPagarDesktop) {
+            btnPagarDesktop.textContent = "Abriendo pago...";
+        }
     }
-})
+}
+
+btnPagar.addEventListener('click', manejarPago)
 
 function validarFormulario() {
-    if (inputNombre.value && inputCelular.value && inputMail.value && inputDepartamento.value && inputDistrito.value && inputDireccion.value) {
+
+    const formularioCompleto =
+        inputNombre.value &&
+        inputCelular.value &&
+        inputMail.value &&
+        inputDepartamento.value &&
+        inputDistrito.value &&
+        inputDireccion.value;
+
+    if (formularioCompleto) {
+
         btnPagar.style.background = "black";
-        alertFooter.classList.remove('checkout-footer__alert--visible')
+
+        if (btnPagarDesktop) {
+            btnPagarDesktop.style.background = "black";
+        }
+
+        // Oculta warning móvil
+        alertFooter.classList.remove('checkout-footer__alert--visible');
+
+        // Oculta warning desktop
+        if (warningDesktop) {
+            warningDesktop.classList.remove('checkout-warning-desktop--visible');
+        }
+
     } else {
+
         btnPagar.style.background = "#616161";
+
+        if (btnPagarDesktop) {
+            btnPagarDesktop.style.background = "#616161";
+        }
+
     }
 }
 
@@ -300,3 +362,13 @@ tiendaCards.forEach(card => {
         tiendaSeleccionada = card.dataset.tienda
     })
 })
+
+
+
+/*RESUMEN DE TOTAL EN DESKTOP */
+document.querySelector('.summary-box-producto').textContent = total
+document.querySelector('.summary-box-total').textContent = total
+
+const btnPagarDesktop = document.getElementById('btn-pagar-desktop')
+btnPagarDesktop.addEventListener('click', manejarPago) 
+

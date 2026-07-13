@@ -21,191 +21,215 @@
         <a class="checkout-header__volver">Volver</a>
     </header>
 
+
     <!-- Banner envío gratis -->
     <div class="banner-envio">
         <i class="fa-solid fa-truck"></i>
         <span id="default">Envío gratis por compras superiores a S/149</span>
     </div>
 
-    <!-- Resumen -->
-    <section class="checkout-resumen">
-        <div class="checkout-resumen__header">
-            <h2>Resumen</h2>
-            <i class="fa-solid fa-chevron-down"></i>
-        </div>
+    <div class="checkout-warning-desktop">
+        <i class="fa-solid fa-circle-exclamation"></i>
+        <p>Completa tus datos para continuar</p>
+    </div>
 
-        <div class="checkout-resumen__detalle">
-            <!--<img src="images/image_p.png" alt="Camisa bootcut">
-            <div class="checkout-resumen__info">
-                <p class="resumen-nombre">Camisa <br> Bootcut</p>
+    <div class="checkout-row">  
 
-                <div class="checkout-resumen__atributos">
-                    <span>Color: <span class="resumen-color">Celeste</span></span>
-                    <span>Talla: <span class="resumen-talla">M</span></span>
-                    <span>Cantidad: <span class="resumen-cantidad">01</span></span>
-                </div>
-            </div>-->
-        </div>
-
-        <div class="checkout-resumen__total">
-            <span>Total</span>
-            <span class="total-price">S/ 120.00</span>
-        </div>
-    </section>
-
-    <!-- Datos comprador -->
-    <section class="checkout-datos">
-        
-        <h2>Datos comprador</h2>
-
-        <div class="checkout-column">
-
-            <div class="checkout-field">
-                <label>Nombre</label>
-                <div class="input-wrapper">
-                    <input type="text" id="input-nombre" placeholder="Agregar">
-                    <i class="fa-solid fa-circle-exclamation input-icon-error"></i>
-                </div>
-                <span class="field-error" id="error-nombre"></span>
-            </div>
-
-            <div class="checkout-field">
-                <label>Celular</label>
-                <div class="input-wrapper">
-                    <div class="input-celular-wrapper">
-                        <span class="celular-prefix">+51</span>
-                        <input type="text" id="input-celular" placeholder="999 999 999" maxlength="9">
-                    </div>
-                        <i class="fa-solid fa-circle-exclamation input-icon-error"></i>
-                </div>
-                 <span class="field-error" id="error-celular"></span>
-            </div>
-
-            <div class="checkout-field">
-                <label>Mail</label>
-
-                <div class="input-wrapper">
-                    <input type="email" id="input-mail" placeholder="Agregar">
-                    <i class="fa-solid fa-circle-exclamation input-icon-error"></i>
+        <div class="checkout-main">
+            <!-- Resumen -->
+            <section class="checkout-resumen">
+                <div class="checkout-resumen__header">
+                    <h2>Resumen</h2>
+                    <i class="fa-solid fa-chevron-down"></i>
                 </div>
 
-                <span class="field-error" id="error-mail"></span>
-            </div>
-        </div>
+                <div class="checkout-resumen__detalle"></div>
 
-    </section>
+                <!-- solo se ve en desktop -->
+                <div class="checkout-resumen__cantidad-desktop">
+                    <span>Cantidad</span>
+                    <span class="cantidad-desktop-value">00 UNIDADES</span>
+                </div>
 
-    <!-- Entrega -->
-    <section class="checkout-entrega">
-        <div class="checkout-entrega__header">
-            <h2>Entrega</h2>
-            <i class="fa-solid fa-chevron-down"></i>
-        </div>
+                <div class="checkout-resumen__total">
+                    <span>Total</span>
+                    <span class="total-price">S/ 120.00</span>
+                </div>
+            </section>
 
-        <div class="checkout-entrega__content">
-
-            <div class="checkout-entrega__opciones">
-                <label>
-                    <input type="radio" name="entrega" value="delivery" checked> Delivery
-                </label>
-                <label>
-                    <input type="radio" name="entrega" value="recojo"> Retiro en tienda
-                </label>
-            </div>
-
-            <div class="checkout-entrega__fields">
+            <!-- Datos comprador -->
+            <section class="checkout-datos">
                 
-                <!-- ============ DELIVERY ============ -->
-                <div class="entrega-delivery entrega-delivery--visible" id="entrega-delivery">
-                    
-                    <!-- Opciones de envío -->
-                    <div class="entrega-opciones-envio">
+                <h2>Datos comprador</h2>
 
-                        <!-- Estado 1: envío gratis por destino -->
-                        <div class="envio-item envio-item--gratis envio-item--hidden">
-                            <span>• Envío a Lima Metropolitana</span>
-                            <span class="envio-badge">GRATIS</span>
+                <div class="checkout-column">
+
+                    <div class="checkout-field">
+                        <label>Nombre</label>
+                        <div class="input-wrapper">
+                            <input type="text" id="input-nombre" placeholder="Agregar">
+                            <i class="fa-solid fa-circle-exclamation input-icon-error"></i>
+                        </div>
+                        <span class="field-error" id="error-nombre"></span>
+                    </div>
+
+                    <div class="checkout-field">
+                        <label>Celular</label>
+                        <div class="input-wrapper">
+                            <div class="input-celular-wrapper">
+                                <span class="celular-prefix">+51</span>
+                                <input type="text" id="input-celular" placeholder="999 999 999" maxlength="9">
+                            </div>
+                                <i class="fa-solid fa-circle-exclamation input-icon-error"></i>
+                        </div>
+                        <span class="field-error" id="error-celular"></span>
+                    </div>
+
+                    <div class="checkout-field">
+                        <label>Mail</label>
+
+                        <div class="input-wrapper">
+                            <input type="email" id="input-mail" placeholder="Agregar">
+                            <i class="fa-solid fa-circle-exclamation input-icon-error"></i>
                         </div>
 
-                        <!-- Estado 2: progress bar -->
-                        <div class="envio-item envio-item--progress">
-                            <p>¡Estás a solo <strong>S/29.00</strong> de tener <strong>Envío Gratis!</strong></p>
-                            <div class="envio-progress-bar">
-                                <div class="envio-progress-bar__fill"></div>
+                        <span class="field-error" id="error-mail"></span>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Entrega -->
+            <section class="checkout-entrega">
+                <div class="checkout-entrega__header">
+                    <h2>Entrega</h2>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+
+                <div class="checkout-entrega__content">
+
+                    <div class="checkout-entrega__opciones">
+                        <label>
+                            <input type="radio" name="entrega" value="delivery" checked> Delivery
+                        </label>
+                        <label>
+                            <input type="radio" name="entrega" value="recojo"> Retiro en tienda
+                        </label>
+                    </div>
+
+                    <div class="checkout-entrega__fields">
+                        
+                        <!-- ============ DELIVERY ============ -->
+                        <div class="entrega-delivery entrega-delivery--visible" id="entrega-delivery">
+                            
+                            <!-- Opciones de envío -->
+                            <div class="entrega-opciones-envio">
+
+                                <!-- Estado 1: envío gratis por destino -->
+                                <div class="envio-item envio-item--gratis envio-item--hidden">
+                                    <span>• Envío a Lima Metropolitana</span>
+                                    <span class="envio-badge">GRATIS</span>
+                                </div>
+
+                                <!-- Estado 2: progress bar -->
+                                <div class="envio-item envio-item--progress">
+                                    <p>¡Estás a solo <strong>S/29.00</strong> de tener <strong>Envío Gratis!</strong></p>
+                                    <div class="envio-progress-bar">
+                                        <div class="envio-progress-bar__fill"></div>
+                                    </div>
+                                </div>
+
+                                <!-- Estado 3: tarifas por defecto -->
+                                <div class="envio-item envio-item--tarifas">
+                                    <span>• Envío a Lima Metropolitana <span class="envio-precio">S/15.00</span></span>
+                                    <span>• Envío a todo Peru <span class="envio-precio">S/25.00</span></span>
+                                </div>
+
+                            </div>
+
+
+                            <div class="checkout-field">
+                                <label>Departamento</label>
+                                <select id="input-departamento">
+                                    <option value="">Seleccionar</option>
+                                    <option value="lima">Lima</option>
+                                    <option value="arequipa">Arequipa</option>
+                                    <option value="cusco">Cusco</option>
+                                    <option value="piura">Piura</option>
+                                    <option value="trujillo">Trujillo</option>
+                                </select>
+                            </div>
+
+                            <div class="checkout-field">
+                                <label>Distrito</label>
+                                <input type="text" id="input-distrito" placeholder="Surco">
+                            </div>
+
+                            <div class="checkout-field">
+                                <label>Dirección</label>
+                                <input type="text" id="input-direccion" placeholder="Av. Alfredo Benavides 778">
                             </div>
                         </div>
+                    </div>
 
-                        <!-- Estado 3: tarifas por defecto -->
-                        <div class="envio-item envio-item--tarifas">
-                            <span>• Envío a Lima Metropolitana <span class="envio-precio">S/15.00</span></span>
-                            <span>• Envío a todo Peru <span class="envio-precio">S/25.00</span></span>
+                    <!-- ============ RETIRO EN TIENDA (nuevo, independiente) ============ -->
+                    <div class="entrega-recojo" id="entrega-recojo">
+
+                        <div class="checkout-field">
+                            <label>Departamento</label>
+                            <select id="input-departamento-recojo">
+                                <option value="lima">Lima, Lima</option>
+                            </select>
+                        </div>
+
+                        <div class="tienda-card" data-tienda="jockey-plaza">
+                            <div class="tienda-card__info">
+                                <p class="tienda-card__nombre">Jockey Plaza</p>
+                                <p class="tienda-card__direccion">• Av. Javier Prado Este 4200 Surco, Local 103</p>
+                                <p class="tienda-card__horario">Lima · Horario: 9:00 a 18:00</p>
+                            </div>
+                            <button type="button" class="tienda-card__btn">Seleccionar</button>
+                        </div>
+
+                        <div class="tienda-card" data-tienda="angamos-open-plaza">
+                            <div class="tienda-card__info">
+                                <p class="tienda-card__nombre">Angamos Open Plaza</p>
+                                <p class="tienda-card__direccion">• Av. Angamos Este 1803, Surquillo</p>
+                                <p class="tienda-card__horario">Lima · Horario: 9:00 a 18:00</p>
+                            </div>
+                            <button type="button" class="tienda-card__btn">Seleccionar</button>
+                        </div>
+
+                        <div class="checkout-field">
+                            <label>Fecha de retiro</label>
+                            <input type="date" id="input-fecha-retiro">
                         </div>
 
                     </div>
 
-
-                    <div class="checkout-field">
-                        <label>Departamento</label>
-                        <select id="input-departamento">
-                            <option value="">Seleccionar</option>
-                            <option value="lima">Lima</option>
-                            <option value="arequipa">Arequipa</option>
-                            <option value="cusco">Cusco</option>
-                            <option value="piura">Piura</option>
-                            <option value="trujillo">Trujillo</option>
-                        </select>
-                    </div>
-
-                    <div class="checkout-field">
-                        <label>Distrito</label>
-                        <input type="text" id="input-distrito" placeholder="Surco">
-                    </div>
-
-                    <div class="checkout-field">
-                        <label>Dirección</label>
-                        <input type="text" id="input-direccion" placeholder="Av. Alfredo Benavides 778">
-                    </div>
-                </div>
-            </div>
-
-             <!-- ============ RETIRO EN TIENDA (nuevo, independiente) ============ -->
-            <div class="entrega-recojo" id="entrega-recojo">
-
-                <div class="checkout-field">
-                    <label>Departamento</label>
-                    <select id="input-departamento-recojo">
-                        <option value="lima">Lima, Lima</option>
-                    </select>
                 </div>
 
-                <div class="tienda-card" data-tienda="jockey-plaza">
-                    <div class="tienda-card__info">
-                        <p class="tienda-card__nombre">Jockey Plaza</p>
-                        <p class="tienda-card__direccion">• Av. Javier Prado Este 4200 Surco, Local 103</p>
-                        <p class="tienda-card__horario">Lima · Horario: 9:00 a 18:00</p>
-                    </div>
-                    <button type="button" class="tienda-card__btn">Seleccionar</button>
-                </div>
-
-                <div class="tienda-card" data-tienda="angamos-open-plaza">
-                    <div class="tienda-card__info">
-                        <p class="tienda-card__nombre">Angamos Open Plaza</p>
-                        <p class="tienda-card__direccion">• Av. Angamos Este 1803, Surquillo</p>
-                        <p class="tienda-card__horario">Lima · Horario: 9:00 a 18:00</p>
-                    </div>
-                    <button type="button" class="tienda-card__btn">Seleccionar</button>
-                </div>
-
-                <div class="checkout-field">
-                    <label>Fecha de retiro</label>
-                    <input type="date" id="input-fecha-retiro">
-                </div>
-
-            </div>
+            </section>
 
         </div>
 
-    </section>
+        <aside class="checkout-summary-box">
+            <div class="checkout-summary-box__row">
+                <span>Producto</span>
+                <span class="summary-box-producto">S/ 0.00</span>
+            </div>
+            <div class="checkout-summary-box__row">
+                <span>Envío</span>
+                <span class="summary-box-envio">Gratis</span>
+            </div>
+            <div class="checkout-summary-box__row checkout-summary-box__row--total">
+                <span>Total</span>
+                <span class="summary-box-total">S/ 0.00</span>
+            </div>
+            <button type="button" id="btn-pagar-desktop">Ir a pagar</button>
+        </aside>
+
+    </div>
 
   </div>
 
