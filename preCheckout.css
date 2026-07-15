@@ -419,11 +419,11 @@ input.input--error{
 }
 
 .checkout-entrega__header{
-    border: 1px solid pink;
+    /*border: 1px solid pink;*/
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 8px 8px 8px 0;
+    padding: 8px 0px;
 }
 
 .checkout-entrega__header h2{
