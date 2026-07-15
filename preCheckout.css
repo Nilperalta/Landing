@@ -311,6 +311,7 @@ body {
 .checkout-field input:focus{
     outline:none;
     border-color:#A6A6A6;
+    background-color: #FFFFFF;
 }
 
 .input-celular-wrapper:focus-within{
