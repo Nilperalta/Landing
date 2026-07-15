@@ -117,12 +117,13 @@ function manejarPago() {
         inputDistrito.value &&
         inputDireccion.value;
 
+    // ¿El formulario está incompleto?
     if (!formularioCompleto) {
 
         // Warning mobile
         alertFooter.classList.add('checkout-footer__alert--visible');
 
-        // Warning desktop
+        // // ¿Existe el warning de desktop?// Warning desktop
         if (warningDesktop) {
             warningDesktop.classList.add('checkout-warning-desktop--visible');
         }
@@ -146,6 +147,7 @@ function manejarPago() {
 }
 
 btnPagar.addEventListener('click', manejarPago)
+
 
 function validarFormulario() {
 
@@ -253,11 +255,12 @@ inputDepartamento.addEventListener('change', () => {
     const valor = inputDepartamento.value
     
     if (valor === 'arequipa') {
-        bannerTexto.textContent="Envío gratis a Arequipa"
+        bannerTexto.innerHTML = '<span class="banner-envio__destacado">Envío gratis</span> a Arequipa'
         envioTarifas.classList.add("envio-item--hidden");
         envioGratis.classList.remove("envio-item--hidden");
         envioGratisText.textContent='• Envío a Arequipa'
     } else{
+        bannerTexto.innerHTML = '<span class="banner-envio__destacado">Envío gratis</span> por compras superiores a S/149'
         envioTarifas.classList.remove("envio-item--hidden");
         envioGratis.classList.add("envio-item--hidden");    
     }
@@ -372,3 +375,14 @@ document.querySelector('.summary-box-total').textContent = total
 const btnPagarDesktop = document.getElementById('btn-pagar-desktop')
 btnPagarDesktop.addEventListener('click', manejarPago) 
 
+
+
+inputFechaRetiro.addEventListener('change', () => {
+
+    if (inputFechaRetiro.value) {
+        inputFechaRetiro.classList.add('has-value');
+    } else {
+        inputFechaRetiro.classList.remove('has-value');
+    }
+
+});
